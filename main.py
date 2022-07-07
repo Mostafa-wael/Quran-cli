@@ -3,7 +3,8 @@ from matplotlib.style import available
 import requests
 from prettytable import PrettyTable
 import xml.etree.ElementTree as ET
-
+import subprocess
+import sys
 
 language = 'ar'
 API_URL = 'https://mp3quran.net/api/_english.php?language={}'.format(language)
@@ -81,7 +82,9 @@ def getSura(sura):
     # return json_response
     pass
 
-
+###############################################################################
+# Radio
+###############################################################################
 def getRadioData():
     apiEndpoint = 'https://api.mp3quran.net/radios/radio_english.json'
     response = requests.request("GET", apiEndpoint, data=payload,  headers=headersList)
@@ -105,6 +108,10 @@ def getRadioURL(radioIndex):
     data = getRadioData()
     return data[radioIndex]['radio_url']
 
+def runRadio(radioIndex):
+    subprocess.call(["mpv", getRadioURL(radioIndex)])
+
+
 
 if __name__ == '__main__':
     # print('All Reciters')
@@ -120,4 +127,4 @@ if __name__ == '__main__':
     ################################################################
     showAllRadios()
     radioIndex = 0 #int(input("Select Radio: "))
-    print(getRadioURL(radioIndex))
+    runRadio(radioIndex)
