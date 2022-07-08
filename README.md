@@ -14,7 +14,7 @@ API: `https://mp3quran.net/eng/api`
 7. Add more detailed instructions.
 8. Show supported OSes.
 9.  Add unit tests.
-10. publish on pipy.org.
+10. publish on pipy.org.   (InProgress)
 11. Add ability to show the verses/tafseer, ...
 12.  Remember last reciter, radio, ...
 13.  Go to the next sura automatically.
