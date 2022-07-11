@@ -66,14 +66,17 @@ def getSuraURL(reciterIndex, suraIndex):
 def runSura(reciterIndex, suraIndex):
     runFromURL(getSuraURL(reciterIndex, suraIndex))
 
-def selectedReciterMode():
-    print('All Reciters')
-    showAllReciters()
-    reciterIndex = int(input("Select Reciter: "))
+def selectedReciterMode(reciterIndex=-1, suraIndex=-1):
+    if reciterIndex == -1:
+        print('All Reciters')
+        showAllReciters()
+        reciterIndex = int(input("Select Reciter: "))
+    
     reciterData = getOneReciterData(reciterIndex)
     print("Reciter Name: ", reciterData['name'])
-    print('All Available Suras')
-    showAvailableSuras(reciterIndex)
-    suraIndex = int(input("Select Sura: "))
+    if suraIndex == -1:
+        print('All Available Suras')
+        showAvailableSuras(reciterIndex)
+        suraIndex = int(input("Select Sura: "))
     print("Sura Name: ", getSurasDictionary()[suraIndex])
     runSura(reciterIndex, suraIndex)

@@ -34,8 +34,9 @@ def runRadio(radioIndex):
     runFromURL(getRadioURL(radioIndex))
 
 
-def radioMode():
-    showAllRadios()
-    radioIndex =  int(input("Select Radio: "))
+def radioMode(radioIndex=-1):
+    if radioIndex == -1:
+        showAllRadios()
+        radioIndex = int(input("Select Radio: "))
     print("Radio Name: ", getRadioName(radioIndex))
     runRadio(radioIndex)
