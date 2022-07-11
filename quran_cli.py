@@ -1,6 +1,6 @@
-from selectedReciterMode import selectedReciterMode
-from radioMode import radioMode
-from parser import getParser
+from modes.selectedReciterMode import selectedReciterMode
+from modes.radioMode import radioMode
+from utilities.parser import getParser
 
 
 parser = getParser()

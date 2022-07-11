@@ -1,4 +1,4 @@
-from modules import getResponse, runFromURL
+from utilities.helperFunctions import getResponse, runFromURL
 from prettytable import PrettyTable
 import subprocess
 
