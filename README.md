@@ -53,3 +53,4 @@ Recall us in your doa'!
 12. Docker image if feasible.
 13. extract data from the xml.
 14. Make a vs code extension.
+15. Configure the pipelines.

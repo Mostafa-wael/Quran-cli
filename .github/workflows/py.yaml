@@ -27,9 +27,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install pylint pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Analyzing the code with pylint
-        run: |
-          pylint $(git ls-files '*.py')
+      - name: Python Markdown Documentation
+        uses: jbheard/markdown-docs@v0.1
+      # - name: Analyzing the code with pylint
+      #   run: |
+      #     pylint $(git ls-files '*.py')
       # - name: Test with pytest
       #   run: |
       #     pytest
