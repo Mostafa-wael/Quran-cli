@@ -1,5 +1,6 @@
 from modes.selectedReciterMode import selectedReciterMode
 from modes.radioMode import radioMode
+from utilities.customInterfaceFunctions import getInt
 from utilities.parser import getParser
 
 
@@ -13,10 +14,10 @@ suraIndex = int(args.suraIndex)
 
 if __name__ == '__main__':
     if interactiveMode:
-        mode = input("Choose Mode: (1)Selected Reciter, (2) Radio Mode: ")
-        if mode == '1':
+        mode = getInt(userMsg="Choose Mode: (1)Selected Reciter, (2)Radio Mode: ", choices=[1,2])
+        if mode == 1:
             selectedReciterMode()
-        elif mode == '2':
+        elif mode == 2:
             radioMode()
     else:
         if radioIndex >= 0:

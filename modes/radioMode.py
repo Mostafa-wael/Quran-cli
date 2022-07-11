@@ -1,3 +1,4 @@
+from utilities.customInterfaceFunctions import getInt
 from utilities.helperFunctions import getResponse, runFromURL, showListIndex
 
 ###############################################################################
@@ -79,7 +80,7 @@ def radioMode(radioIndex=-1):
     # get the radio index
     if radioIndex == -1:
         showAllRadios()
-        radioIndex = int(input("Select Radio: "))
+        radioIndex = getInt(userMsg="Select Radio: ", choices=range(0, 148))
     ## Show/get the radio data
     print("Radio Name: ", getRadioName(radioIndex))
     runRadio(radioIndex)

@@ -26,7 +26,6 @@ def getResponse(apiEndpoint: str) -> dict:
     response = requests.request(
         "GET", apiEndpoint, data=payload,  headers=headersList)
     json_response = json.loads(response.text)
-    print(type(json_response))
     return json_response
 
 

@@ -54,3 +54,4 @@ Recall us in your doa'!
 13. extract data from the xml.
 14. Make a vs code extension.
 15. Configure the pipelines.
+16. close in case of errors

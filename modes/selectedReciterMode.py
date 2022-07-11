@@ -1,3 +1,4 @@
+from utilities.customInterfaceFunctions import getInt
 from utilities.helperFunctions import getResponse, runFromURL, showListIndex
 from prettytable import PrettyTable
 import xml.etree.ElementTree as ET
@@ -70,12 +71,17 @@ def getSurasDictionary() -> dict:
     return surasDictionary
 
 
+def getAvailableSuras(reciterIndex: int)->list:
+    """Get all the available suras of the reciter in a pretty table
+    """
+    reciterData = getSelectedReciterData(reciterIndex)
+    availableSuras = list(reciterData['suras'].split(","))
+    return availableSuras
 def showAvailableSuras(reciterIndex: int):
     """Show all the available suras of the reciter in a pretty table
     """
-    reciterData = getSelectedReciterData(reciterIndex)
     suras = getSurasDictionary()
-    availableSuras = list(reciterData['suras'].split(","))
+    availableSuras = getAvailableSuras(reciterIndex)
     # TODO: The print logic need to be decoupled from this function
     t = PrettyTable(['Sura Index', 'Name'])
     for suraIndex in availableSuras:
@@ -123,7 +129,7 @@ def selectedReciterMode(reciterIndex=-1, suraIndex=-1):
     if reciterIndex == -1:
         print('All Reciters')
         showAllReciters()
-        reciterIndex = int(input("Select Reciter: "))
+        reciterIndex = getInt(userMsg="Select Reciter: ", choices=range(0, 247)) 
 
     ## Show/get the reciter data
     reciterData = getSelectedReciterData(reciterIndex)
@@ -134,7 +140,7 @@ def selectedReciterMode(reciterIndex=-1, suraIndex=-1):
     if suraIndex == -1:
         print('All Available Suras')
         showAvailableSuras(reciterIndex)
-        suraIndex = int(input("Select Sura: "))
+        suraIndex = getInt(userMsg="Select Sura: ", choices=getAvailableSuras(reciterIndex)) 
     
     ## Show/get the sura data
     print("Sura Name: ", getSurasDictionary()[suraIndex])
