@@ -6,6 +6,7 @@ A simple command line interface for listening to Quran.
 ## Installation
 - `pip3 install -r requirements.txt`
 - Install **mpv** as it is required for playing the audio.
+- Install pydoc: `sudo apt install python-dev-is-python3`
 #### Debian based distributions
 `sudo add-apt-repository ppa:mc3man/mpv-tests`
 `sudo apt update && sudo apt install mpv`
@@ -35,14 +36,20 @@ Recall us in your doa'!
 - Select a reciter: `python3 quran_cli.py -rc <reciter index>`
 - Select a sura: `python3 quran_cli.py -rc <reciter index> -s <sura index>`
 
+## Documentation
+- `pydoc -w quran_cli.py`
 ## TODO
 1. Remove redundant code.
 2. More functional programming.
 3. More pretty output.
-4. Add more detailed instructions.
-5. Add unit tests.
-6. publish on pipy.org.   (InProgress)
-7. Add ability to show the verses/tafseer, ...
-8. Remember last reciter, radio, ...
-9.  Go to the next sura automatically.
-10. Optimize CPU and data transfer.
+4. Better exit output.
+5. Add more detailed instructions.
+6. Add unit tests.
+7. publish on pipy.org.   (InProgress)
+8. Add ability to show the verses/tafseer, ...
+9. Remember last reciter, radio, ...
+10. Go to the next sura automatically.
+11. Optimize CPU and data transfer.
+12. Docker image if feasible.
+13. extract data from the xml.
+14. Make a vs code extension.
