@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { showListIndex } from "../utilities/helperFunctions";
+import { showListIndex , runFromURL } from "../utilities/helperFunctions";
 const url: string = "https://api.mp3quran.net/radios/radio_english.json";
 
 // Get the available radios data
@@ -16,14 +16,11 @@ async function getRadioNamesList(): Promise<string[]> {
     let data  = await getRadioData();
     // loop on json and extract the radio names
     let radios : string[] = [];
-    for (let radio in data) {
-        radios.push(radio['name']);
+    for (let i = 0; i < data.length; i++) {
+        radios.push(data[i]['name']);
     }
     return radios;
 }
-// For testing purposes
-// let items =  getRadioNamesList().then(res => {
-//     console.log(res);});
 
 function showAllRadios(){
     getRadioNamesList().then(res => {
@@ -32,5 +29,46 @@ function showAllRadios(){
         console.log(err);
     });
 }
+/*
+    Get radio name from its index
 
-showAllRadios();
+    Args:
+        radioIndex (int): The index of the radio in the query data
+
+    Returns:
+        str: The radio name
+    
+*/
+async function getRadioName(radioIndex: number) : Promise<string> {
+    let data = await getRadioData();
+    return data[radioIndex]['name'] ;
+
+}
+
+/*
+    Get radio URL from its index
+
+    Args:
+        radioIndex (int): The index of the radio in the query data
+
+    Returns:
+        str: The radio URL
+*/
+
+async function getRadioURL(radioIndex: number) : Promise<string> {
+    let data = await getRadioData()
+    return data[radioIndex]['radio_url']
+}
+/*
+    Run the radio specified
+
+    Args:
+        radioIndex (int): The index of the radio in the query data
+
+*/
+
+async function runRadio(radioIndex: number) {
+    runFromURL(await getRadioURL(radioIndex))
+}
+
+runRadio(0);
