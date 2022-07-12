@@ -35,7 +35,7 @@ def runFromURL(url: str):
     Args:
         url (str): The URL to run using mpv.
     """
-    subprocess.call(["mpv", url])
+    subprocess.call(["mpv", url, "--no-audio-display"])
 
 
 def showListIndex(arr: list, header1: str, header2: str):
