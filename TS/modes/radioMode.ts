@@ -21,10 +21,10 @@ function getRadioData(): Promise<object> {
 
 async function getRadioNamesList(): Promise<string[]> {
     let data  = await getRadioData();
-    // loop on json and extrat the radio names
+    // loop on json and extract the radio names
     let radios : string[] = [];
-    for (let i = 0; i < data.length; i++) {
-        radios.push(data[i]['name']);
+    for (let radio in data) {
+        radios.push(radio['name']);
     }
     return radios;
 }

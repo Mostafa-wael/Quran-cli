@@ -2,3 +2,8 @@ Used Packages till now :  ts-command-line-args
 To test the code:
 - tsc *.ts   // will generate js file 
 - node *.js   // run the file 
+
+install: 
+npm i --save-dev @types/node-fetch
+npm install --save node-fetch@2
+

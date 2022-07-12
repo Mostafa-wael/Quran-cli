@@ -56,15 +56,15 @@ function getRadioData() {
 // }  )
 function getRadioNamesList() {
     return __awaiter(this, void 0, void 0, function () {
-        var data, radios, i;
+        var data, radios, radio;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, getRadioData()];
                 case 1:
                     data = _a.sent();
                     radios = [];
-                    for (i = 0; i < data.length; i++) {
-                        radios.push(data[i]['name']);
+                    for (radio in data) {
+                        radios.push(radio['name']);
                     }
                     return [2 /*return*/, radios];
             }
