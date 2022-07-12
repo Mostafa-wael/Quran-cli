@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import { showListIndex } from "../utilities/helperFunctions";
 const url: string = "https://api.mp3quran.net/radios/radio_english.json";
 
 // Get the available radios data
@@ -11,14 +12,6 @@ function getRadioData(): Promise<object> {
             })
 }
 
-// For testing purposes
-// getRadioData().then(res => {
-//     console.log(res);
-// }
-// ).catch(err => {
-//     console.log(err);
-// }  )
-
 async function getRadioNamesList(): Promise<string[]> {
     let data  = await getRadioData();
     // loop on json and extract the radio names
@@ -29,5 +22,15 @@ async function getRadioNamesList(): Promise<string[]> {
     return radios;
 }
 // For testing purposes
-let items =  getRadioNamesList().then(res => {
-    console.log(res);});
+// let items =  getRadioNamesList().then(res => {
+//     console.log(res);});
+
+function showAllRadios(){
+    getRadioNamesList().then(res => {
+       showListIndex(res, 'Radio Index', 'Name');
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
+showAllRadios();

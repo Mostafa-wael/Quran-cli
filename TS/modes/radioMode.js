@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var node_fetch_1 = require("node-fetch");
+var helperFunctions_1 = require("../utilities/helperFunctions");
 var url = "https://api.mp3quran.net/radios/radio_english.json";
 // Get the available radios data
 function getRadioData() {
@@ -47,13 +48,6 @@ function getRadioData() {
         return res['radios'];
     });
 }
-// For testing purposes
-// getRadioData().then(res => {
-//     console.log(res);
-// }
-// ).catch(err => {
-//     console.log(err);
-// }  )
 function getRadioNamesList() {
     return __awaiter(this, void 0, void 0, function () {
         var data, radios, radio;
@@ -72,6 +66,13 @@ function getRadioNamesList() {
     });
 }
 // For testing purposes
-var items = getRadioNamesList().then(function (res) {
-    console.log(res);
-});
+// let items =  getRadioNamesList().then(res => {
+//     console.log(res);});
+function showAllRadios() {
+    getRadioNamesList().then(function (res) {
+        helperFunctions_1.showListIndex(res, 'Radio Index', 'Name');
+    })["catch"](function (err) {
+        console.log(err);
+    });
+}
+showAllRadios();
