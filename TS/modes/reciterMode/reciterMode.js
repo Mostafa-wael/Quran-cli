@@ -35,12 +35,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var node_fetch_1 = require("node-fetch");
 var helperFunctions_1 = require("../../utilities/helperFunctions");
 var url = "https://mp3quran.net/api/_english.php?";
+// ###############################################################################
+// # Reciters
+// ###############################################################################
 function getReciterData() {
-    return node_fetch_1.default(url)
+    return (0, node_fetch_1["default"])(url)
+        // the JSON body is taken from the response
         .then(function (data) { return data.json(); })
         .then(function (data) {
         return data['reciters'];
@@ -51,16 +55,24 @@ function getReciterNamesList() {
         var data, radios, i;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, getReciterData()];
+                case 0: return [4 /*yield*/, getReciterData()];
                 case 1:
                     data = _a.sent();
                     radios = [];
                     for (i = 0; i < data.length; i++) {
                         radios.push(data[i]['name']);
                     }
-                    return [2, radios];
+                    return [2 /*return*/, radios];
             }
         });
+    });
+}
+function showAllReciters() {
+    getReciterNamesList()
+        .then(function (res) {
+        (0, helperFunctions_1.showListIndex)(res, 'Reciter Index', 'Name');
+    })["catch"](function (err) {
+        console.log(err);
     });
 }
 function getReciterName(reciterIndex) {
@@ -68,24 +80,27 @@ function getReciterName(reciterIndex) {
         var data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, getReciterData()];
+                case 0: return [4 /*yield*/, getReciterData()];
                 case 1:
                     data = _a.sent();
-                    return [2, data[reciterIndex]['name']];
+                    return [2 /*return*/, data[reciterIndex]['name']];
             }
         });
     });
 }
+// ###############################################################################
+// # Suras
+// ###############################################################################
 function getSurahURL(reciterIndex, surahIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data, url;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, getReciterData()];
+                case 0: return [4 /*yield*/, getReciterData()];
                 case 1:
                     data = _a.sent();
                     url = data[reciterIndex]['Server'] + "/" + String(surahIndex).padStart(3, '0') + ".mp3";
-                    return [2, url];
+                    return [2 /*return*/, url];
             }
         });
     });
@@ -95,17 +110,17 @@ function runSura(reciterIndex, surahIndex) {
         var reciterName, _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
-                case 0: return [4, getReciterName(reciterIndex)];
+                case 0: return [4 /*yield*/, getReciterName(reciterIndex)];
                 case 1:
                     reciterName = _b.sent();
-                    console.log("Playing " + reciterName);
+                    console.log("Playing ".concat(reciterName));
                     _a = helperFunctions_1.runFromURL;
-                    return [4, getSurahURL(reciterIndex, surahIndex)];
+                    return [4 /*yield*/, getSurahURL(reciterIndex, surahIndex)];
                 case 2:
                     _a.apply(void 0, [_b.sent()]);
-                    return [2];
+                    return [2 /*return*/];
             }
         });
     });
 }
-runSura(1, 112);
+showAllReciters();

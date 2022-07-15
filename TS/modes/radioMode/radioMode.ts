@@ -72,4 +72,4 @@ async function runRadio(radioIndex: number) {
     runFromURL(await getRadioURL(radioIndex))
 }
 
-runRadio(0);
+showAllRadios();
