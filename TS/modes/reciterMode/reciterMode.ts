@@ -23,15 +23,15 @@ async function getReciterNamesList(): Promise<string[]> {
     }
     return radios;
 }
-// function showAllReciters(){
-//     getReciterNamesList()
-//     .then(res => {
-//        showListIndex(res, 'Reciter Index', 'Name');
-//     })
-//     .catch(err => {
-//         console.log(err);
-//     });
-// }
+function showAllReciters(){
+    getReciterNamesList()
+    .then(res => {
+       showListIndex(res, 'Reciter Index', 'Name');
+    })
+    .catch(err => {
+        console.log(err);
+    });
+}
 async function getReciterName(reciterIndex: number) : Promise<string> {
     let data = await getReciterData();
     return data[reciterIndex]['name'] ;
@@ -51,4 +51,4 @@ async function runSura(reciterIndex: number, surahIndex: number) {
     runFromURL(await getSurahURL(reciterIndex, surahIndex))
 }
 
-runSura(1, 112);
+showAllReciters();
