@@ -37,21 +37,21 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var node_fetch_1 = require("node-fetch");
-var helperFunctions_1 = require("../utilities/helperFunctions");
-var url = "https://api.mp3quran.net/radios/radio_english.json";
-function getRadioData() {
+var helperFunctions_1 = require("../../utilities/helperFunctions");
+var url = "https://mp3quran.net/api/_english.php?";
+function getReciterData() {
     return node_fetch_1.default(url)
-        .then(function (res) { return res.json(); })
-        .then(function (res) {
-        return res['radios'];
+        .then(function (data) { return data.json(); })
+        .then(function (data) {
+        return data['reciters'];
     });
 }
-function getRadioNamesList() {
+function getReciterNamesList() {
     return __awaiter(this, void 0, void 0, function () {
         var data, radios, i;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, getRadioData()];
+                case 0: return [4, getReciterData()];
                 case 1:
                     data = _a.sent();
                     radios = [];
@@ -63,52 +63,49 @@ function getRadioNamesList() {
         });
     });
 }
-function showAllRadios() {
-    getRadioNamesList().then(function (res) {
-        helperFunctions_1.showListIndex(res, 'Radio Index', 'Name');
-    }).catch(function (err) {
-        console.log(err);
-    });
-}
-function getRadioName(radioIndex) {
+function getReciterName(reciterIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, getRadioData()];
+                case 0: return [4, getReciterData()];
                 case 1:
                     data = _a.sent();
-                    return [2, data[radioIndex]['name']];
+                    return [2, data[reciterIndex]['name']];
             }
         });
     });
 }
-function getRadioURL(radioIndex) {
+function getSurahURL(reciterIndex, surahIndex) {
     return __awaiter(this, void 0, void 0, function () {
-        var data;
+        var data, url;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, getRadioData()];
+                case 0: return [4, getReciterData()];
                 case 1:
                     data = _a.sent();
-                    return [2, data[radioIndex]['radio_url']];
+                    url = data[reciterIndex]['Server'] + "/" + String(surahIndex).padStart(3, '0') + ".mp3";
+                    return [2, url];
             }
         });
     });
 }
-function runRadio(radioIndex) {
+function runSura(reciterIndex, surahIndex) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a;
+        var reciterName, _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
-                case 0:
-                    _a = helperFunctions_1.runFromURL;
-                    return [4, getRadioURL(radioIndex)];
+                case 0: return [4, getReciterName(reciterIndex)];
                 case 1:
+                    reciterName = _b.sent();
+                    console.log("Playing " + reciterName);
+                    _a = helperFunctions_1.runFromURL;
+                    return [4, getSurahURL(reciterIndex, surahIndex)];
+                case 2:
                     _a.apply(void 0, [_b.sent()]);
                     return [2];
             }
         });
     });
 }
-runRadio(0);
+runSura(1, 112);

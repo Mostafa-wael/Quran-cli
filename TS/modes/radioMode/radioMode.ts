@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { showListIndex , runFromURL } from "../utilities/helperFunctions";
+import { showListIndex , runFromURL } from "../../utilities/helperFunctions";
 const url: string = "https://api.mp3quran.net/radios/radio_english.json";
 
 // Get the available radios data
@@ -42,7 +42,6 @@ function showAllRadios(){
 async function getRadioName(radioIndex: number) : Promise<string> {
     let data = await getRadioData();
     return data[radioIndex]['name'] ;
-
 }
 
 /*
@@ -68,6 +67,8 @@ async function getRadioURL(radioIndex: number) : Promise<string> {
 */
 
 async function runRadio(radioIndex: number) {
+    let radioName = await getRadioName(radioIndex);
+    console.log(`Playing ${radioName}`);
     runFromURL(await getRadioURL(radioIndex))
 }
 

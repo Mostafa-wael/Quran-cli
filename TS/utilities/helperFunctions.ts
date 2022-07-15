@@ -18,4 +18,8 @@ export function runFromURL(url: string) {
     });
     mpvPlayer.load(url);
     mpvPlayer.play();
+    mpvPlayer.on('stopped', function() {
+        console.log("Finished playing");
+        process.exit(1); // close the program
+      });
 }
