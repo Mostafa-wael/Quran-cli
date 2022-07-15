@@ -1,5 +1,5 @@
 __pycache__/
 TS/modes/node_modules/
 TS/package-lock.json
-TS/package.json
+# TS/package.json
 TS/node_modules
