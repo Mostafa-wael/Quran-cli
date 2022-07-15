@@ -3,13 +3,20 @@ exports.__esModule = true;
 exports.runFromURL = exports.showListIndex = void 0;
 var PrettyTable = require('prettytable');
 var mpv = require('node-mpv');
-function showListIndex(arr, header1, header2) {
+var data_1 = require("./data");
+function showListIndex(arr, header1, header2, suras) {
+    if (suras === void 0) { suras = false; }
     var pt = new PrettyTable();
     pt.fieldNames([header1, header2]);
     for (var i = 0; i < arr.length; i++) {
-        pt.addRow([i, arr[i]]);
+        if (suras) {
+            pt.addRow([i, arr[i]]);
+        }
+        else {
+            pt.addRow([arr[i], data_1.surasDictionary[arr[i]]]);
+        }
     }
-    console.log(pt.toString());
+    //console.log(pt.toString());
 }
 exports.showListIndex = showListIndex;
 function runFromURL(url) {

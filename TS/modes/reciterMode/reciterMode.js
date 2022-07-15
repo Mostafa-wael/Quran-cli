@@ -42,7 +42,7 @@ var url = "https://mp3quran.net/api/_english.php?";
 // ###############################################################################
 // # Reciters
 // ###############################################################################
-function getReciterData() {
+function getReciters() {
     return (0, node_fetch_1["default"])(url)
         // the JSON body is taken from the response
         .then(function (data) { return data.json(); })
@@ -55,7 +55,7 @@ function getReciterNamesList() {
         var data, radios, i;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, getReciterData()];
+                case 0: return [4 /*yield*/, getReciters()];
                 case 1:
                     data = _a.sent();
                     radios = [];
@@ -80,7 +80,7 @@ function getReciterName(reciterIndex) {
         var data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, getReciterData()];
+                case 0: return [4 /*yield*/, getReciters()];
                 case 1:
                     data = _a.sent();
                     return [2 /*return*/, data[reciterIndex]['name']];
@@ -88,15 +88,65 @@ function getReciterName(reciterIndex) {
         });
     });
 }
+function getReciterData(reciterIndex) {
+    return __awaiter(this, void 0, void 0, function () {
+        var data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, getReciters()];
+                case 1:
+                    data = _a.sent();
+                    return [2 /*return*/, data[reciterIndex]];
+            }
+        });
+    });
+}
 // ###############################################################################
 // # Suras
 // ###############################################################################
+/*
+    Get all the available suras of the reciter in a pretty table
+    
+*/
+function getAvailableSuras(reciterIndex) {
+    return __awaiter(this, void 0, void 0, function () {
+        var reciterData, availableSuras;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, getReciterData(reciterIndex)];
+                case 1:
+                    reciterData = _a.sent();
+                    availableSuras = reciterData['suras'].split(",");
+                    return [2 /*return*/, availableSuras];
+            }
+        });
+    });
+}
+/*
+    Show all the available suras of the reciter in a pretty table
+    
+*/
+function showAvailableSuras(reciterIndex) {
+    return __awaiter(this, void 0, void 0, function () {
+        var availableSuras;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, getAvailableSuras(reciterIndex)];
+                case 1:
+                    availableSuras = _a.sent();
+                    console.log(availableSuras);
+                    (0, helperFunctions_1.showListIndex)(availableSuras, 'Surah Index', 'Name');
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
 function getSurahURL(reciterIndex, surahIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data, url;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, getReciterData()];
+                case 0: return [4 /*yield*/, getReciterData(reciterIndex)];
                 case 1:
                     data = _a.sent();
                     url = data[reciterIndex]['Server'] + "/" + String(surahIndex).padStart(3, '0') + ".mp3";
@@ -105,7 +155,7 @@ function getSurahURL(reciterIndex, surahIndex) {
         });
     });
 }
-function runSura(reciterIndex, surahIndex) {
+function runSurah(reciterIndex, surahIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var reciterName, _a;
         return __generator(this, function (_b) {
@@ -123,4 +173,4 @@ function runSura(reciterIndex, surahIndex) {
         });
     });
 }
-showAllReciters();
+showAvailableSuras(5);
