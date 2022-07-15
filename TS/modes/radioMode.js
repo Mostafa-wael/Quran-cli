@@ -41,7 +41,7 @@ var helperFunctions_1 = require("../utilities/helperFunctions");
 var url = "https://api.mp3quran.net/radios/radio_english.json";
 // Get the available radios data
 function getRadioData() {
-    return (0, node_fetch_1["default"])(url)
+    return node_fetch_1["default"](url)
         // the JSON body is taken from the response
         .then(function (res) { return res.json(); })
         .then(function (res) {
@@ -67,7 +67,7 @@ function getRadioNamesList() {
 }
 function showAllRadios() {
     getRadioNamesList().then(function (res) {
-        (0, helperFunctions_1.showListIndex)(res, 'Radio Index', 'Name');
+        helperFunctions_1.showListIndex(res, 'Radio Index', 'Name');
     })["catch"](function (err) {
         console.log(err);
     });

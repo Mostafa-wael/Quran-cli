@@ -1,6 +1,5 @@
 "use strict";
 exports.__esModule = true;
-exports.showListIndex = void 0;
 var prettytable_1 = require("prettytable");
 function showListIndex(arr, header1, header2) {
     var pt = new prettytable_1["default"]();
