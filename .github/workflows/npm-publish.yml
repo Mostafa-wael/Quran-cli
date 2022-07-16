@@ -22,10 +22,19 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 17.1.0
-          registry-url: https://registry.npmjs.org/
-      - run: curl https://npmjs.org/install.sh | sh
-      - run: npm i
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_secret}}
+          node-version: 12
+      - run: npm install
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.npm_secret }}
+
+      # - uses: actions/checkout@v3
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 17.1.0
+      #     registry-url: https://registry.npmjs.org/
+      # - run: curl https://npmjs.org/install.sh | sh
+      # - run: npm i
+      # - run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.npm_secret}}
