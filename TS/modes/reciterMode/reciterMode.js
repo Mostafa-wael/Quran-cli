@@ -38,6 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var node_fetch_1 = require("node-fetch");
 var helperFunctions_1 = require("../../utilities/helperFunctions");
+var data_2 = require("../../utilities/data");
 var url = "https://mp3quran.net/api/_english.php?";
 function getReciters() {
     return __awaiter(this, void 0, void 0, function () {
@@ -57,17 +58,17 @@ function getReciters() {
 }
 function getReciterNamesList() {
     return __awaiter(this, void 0, void 0, function () {
-        var data, radios, i;
+        var data, reciters, i;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4, getReciters()];
                 case 1:
                     data = _a.sent();
-                    radios = [];
+                    reciters = [];
                     for (i = 0; i < data.length; i++) {
-                        radios.push(data[i]['name']);
+                        reciters.push(data[i]['name']);
                     }
-                    return [2, radios];
+                    return [2, reciters];
             }
         });
     });
@@ -157,7 +158,7 @@ function runSurah(reciterIndex, surahIndex) {
                 case 0: return [4, getReciterName(reciterIndex)];
                 case 1:
                     reciterName = _b.sent();
-                    console.log("Playing " + reciterName);
+                    console.log("Reciter: " + reciterName + ", Surah: " + data_2.surasDictionary[surahIndex]);
                     _a = helperFunctions_1.runFromURL;
                     return [4, getSurahURL(reciterIndex, surahIndex)];
                 case 2:
@@ -167,26 +168,4 @@ function runSurah(reciterIndex, surahIndex) {
         });
     });
 }
-function interactiveReciterMode() {
-    return __awaiter(this, void 0, void 0, function () {
-        var reciterIndex, _a, surahIndex, _b;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
-                case 0:
-                    showAllReciters();
-                    _a = Number;
-                    return [4, helperFunctions_1.getInput("Enter reciter index: ")];
-                case 1:
-                    reciterIndex = _a.apply(void 0, [_c.sent()]);
-                    showAvailableSuras(reciterIndex);
-                    _b = Number;
-                    return [4, helperFunctions_1.getInput("Enter surah index: ")];
-                case 2:
-                    surahIndex = _b.apply(void 0, [_c.sent()]);
-                    runSurah(reciterIndex, surahIndex);
-                    return [2];
-            }
-        });
-    });
-}
-interactiveReciterMode();
+exports.runSurah = runSurah;

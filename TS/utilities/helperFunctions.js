@@ -31,16 +31,3 @@ function runFromURL(url) {
     });
 }
 exports.runFromURL = runFromURL;
-var readline = require("readline");
-var rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-function getInput(prompt) {
-    return new Promise(function (resolve, reject) {
-        rl.question(prompt, function (answer) {
-            resolve(answer);
-        });
-    });
-}
-exports.getInput = getInput;

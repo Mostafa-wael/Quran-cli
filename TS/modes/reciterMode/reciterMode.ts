@@ -1,5 +1,7 @@
 import fetch from "node-fetch";
 import { showListIndex , runFromURL } from "../../utilities/helperFunctions";
+import { surasDictionary } from "../../utilities/data";
+
 
 const url: string = "https://mp3quran.net/api/_english.php?";
 
@@ -23,11 +25,11 @@ async function getReciters(): Promise<object> {
 async function getReciterNamesList(): Promise<string[]> {
     let data  = await getReciters();
     // loop on json and extract the reciter names
-    let radios : string[] = [];
+    let reciters : string[] = [];
     for (let i = 0; i < data.length; i++) {
-        radios.push(data[i]['name']);
+        reciters.push(data[i]['name']);
     }
-    return radios;
+    return reciters;
 }
 /**
  * Show all the available reciters in a pretty table
@@ -97,8 +99,8 @@ async function getSurahURL(reciterIndex: number, surahIndex: number) : Promise<s
  * @param reciterIndex The index of the reciter in the query data
  * @param surahIndex The index of the surah in the query data
  */
-async function runSurah(reciterIndex: number, surahIndex: number) {
+export async function runSurah(reciterIndex: number, surahIndex: number) {
     let reciterName = await getReciterName(reciterIndex);
-    console.log(`Playing ${reciterName}`);
+    console.log(`Reciter: ${reciterName}, Surah: ${surasDictionary[surahIndex]}`);
     runFromURL(await getSurahURL(reciterIndex, surahIndex))
 }

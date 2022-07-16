@@ -104,7 +104,7 @@ function runRadio(radioIndex) {
                 case 0: return [4, getRadioName(radioIndex)];
                 case 1:
                     radioName = _b.sent();
-                    console.log("Playing " + radioName);
+                    console.log("Radio Channel: " + radioName);
                     _a = helperFunctions_1.runFromURL;
                     return [4, getRadioURL(radioIndex)];
                 case 2:
@@ -114,3 +114,4 @@ function runRadio(radioIndex) {
         });
     });
 }
+exports.runRadio = runRadio;

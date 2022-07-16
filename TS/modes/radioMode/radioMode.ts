@@ -64,9 +64,9 @@ async function getRadioURL(radioIndex: number) : Promise<string> {
  * Runs the specified radio
  * @param radioIndex The index of the radio in the query data
  */
-async function runRadio(radioIndex: number) {
+export async function runRadio(radioIndex: number) {
     let radioName = await getRadioName(radioIndex);
-    console.log(`Playing ${radioName}`);
+    console.log(`Radio Channel: ${radioName}`);
     runFromURL(await getRadioURL(radioIndex))
 }
 
