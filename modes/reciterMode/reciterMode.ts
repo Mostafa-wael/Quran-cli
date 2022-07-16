@@ -4,7 +4,7 @@ import { surasDictionary } from "../../utilities/data";
 
 
 const url: string = "https://mp3quran.net/api/_english.php?";
-
+s
 // ###############################################################################
 // # Reciters
 // ###############################################################################
@@ -14,9 +14,15 @@ const url: string = "https://mp3quran.net/api/_english.php?";
  * @returns The available reciters data from the endpoint
  */
 async function getData(): Promise<object> {
-    const data = await fetch(url);
-    const data_1 = await data.json();
-    return data_1['reciters'];
+    try {
+        const data = await fetch(url);
+        const data_1 = await data.json();
+        return data_1['reciters'];
+    }
+    catch (err) {
+        console.log("No available Internet connection");
+        process.exit(1); // close the program
+    }
 }
 /**
  * 
@@ -63,7 +69,7 @@ export function showAllReciters() {
  * @returns all the available suras for a specified reciter
  */
 export async function getReciterAvailableSuras(reciterIndex: number): Promise<string[]> {
-    
+
     let reciterData = await getSpecificReciterData(reciterIndex);
     let availableSuras = reciterData['suras'].split(",");
     return availableSuras;
