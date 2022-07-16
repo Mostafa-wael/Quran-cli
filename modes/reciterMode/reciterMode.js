@@ -73,16 +73,6 @@ function getReciterNamesList() {
         });
     });
 }
-function showAllReciters() {
-    getReciterNamesList()
-        .then(function (res) {
-        helperFunctions_1.showListIndex(res, 'Reciter Index', 'Name');
-    })
-        .catch(function (err) {
-        console.log(err);
-    });
-}
-exports.showAllReciters = showAllReciters;
 function getReciterName(reciterIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data;
@@ -109,6 +99,16 @@ function getReciterData(reciterIndex) {
         });
     });
 }
+function showAllReciters() {
+    getReciterNamesList()
+        .then(function (res) {
+        helperFunctions_1.showListIndex(res, 'Reciter Index', 'Name');
+    })
+        .catch(function (err) {
+        console.log(err);
+    });
+}
+exports.showAllReciters = showAllReciters;
 function getAvailableSuras(reciterIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var reciterData, availableSuras;
@@ -124,6 +124,20 @@ function getAvailableSuras(reciterIndex) {
     });
 }
 exports.getAvailableSuras = getAvailableSuras;
+function getSurahURL(reciterIndex, surahIndex) {
+    return __awaiter(this, void 0, void 0, function () {
+        var data, url;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4, getReciterData(reciterIndex)];
+                case 1:
+                    data = _a.sent();
+                    url = data['Server'] + "/" + String(surahIndex).padStart(3, '0') + ".mp3";
+                    return [2, url];
+            }
+        });
+    });
+}
 function showAvailableSuras(reciterIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var availableSuras;
@@ -139,20 +153,6 @@ function showAvailableSuras(reciterIndex) {
     });
 }
 exports.showAvailableSuras = showAvailableSuras;
-function getSurahURL(reciterIndex, surahIndex) {
-    return __awaiter(this, void 0, void 0, function () {
-        var data, url;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4, getReciterData(reciterIndex)];
-                case 1:
-                    data = _a.sent();
-                    url = data['Server'] + "/" + String(surahIndex).padStart(3, '0') + ".mp3";
-                    return [2, url];
-            }
-        });
-    });
-}
 function runSurah(reciterIndex, surahIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var reciterName, _a;

@@ -63,14 +63,6 @@ function getRadioNamesList() {
         });
     });
 }
-function showAllRadios() {
-    getRadioNamesList().then(function (res) {
-        helperFunctions_1.showListIndex(res, 'Radio Index', 'Name');
-    }).catch(function (err) {
-        console.log(err);
-    });
-}
-exports.showAllRadios = showAllRadios;
 function getRadioName(radioIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data;
@@ -97,6 +89,14 @@ function getRadioURL(radioIndex) {
         });
     });
 }
+function showAllRadios() {
+    getRadioNamesList().then(function (res) {
+        helperFunctions_1.showListIndex(res, 'Radio Index', 'Name');
+    }).catch(function (err) {
+        console.log(err);
+    });
+}
+exports.showAllRadios = showAllRadios;
 function runRadio(radioIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var radioName, _a;

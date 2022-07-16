@@ -15,31 +15,39 @@ A simple command line interface for listening to Quran.
 
 ## How to use
 - To build the source code: `tsc`
+- To show the version: `quran-cli -v`
 - To show help: `node  quran-cli.js -h`
 ```
-
 Quran-CLI
 
   Listen to the Quran from your terminal 
 
 Options
 
-  -v, --version string          Show version                           
-  -d, --radio number            Specify the radio channel to listen to 
-  -c, --reciterSurah number[]   Specify the reciter to listen to       
-  -h, --help                    Prints this usage guide                
+  -n, --showRadio               Shows all available radio channels                                            
+  -d, --radio number            Play specific radio                                                           
+  -c, --reciterSurah number[]   lay specific surah by a specific reciter.                                     
+                                If no surah specified, it will shows the available suras for the specified    
+                                reciter.                                                                      
+  -r, --showReciters            Shows all available reciters                                                  
+  -s, --showSuras               Show all suras in the Quran                                                   
+  -v, --version                 Shows the current version                                                     
+  -h, --help                    Prints this usage guide                                                       
 
 ^_^
 
   Recall us in your doa'! 
-
 ```
-- Run the radio: `python3 quran_cli.py -rd <radio index>`
-- Select a reciter: `python3 quran_cli.py -rc <reciter index>`
-- Select a sura: `python3 quran_cli.py -rc <reciter index> -s <sura index>`
+- Show all available radios channels: `node  quran-cli.js -n`
+- Play specific radio: `node quran-cli.js -d <radio index>`
+- Show all available reciters: `node  quran-cli.js -r`
+- Play specific surah by a specific reciter: `node  quran-cli.js -c <reciter index>  <surah index>`
+- Show all available suras by a specific reciter : `node  quran-cli.js -c <reciter index>`
+- Show all suras in the Quran: `node  quran-cli.js -s`
 
 ## Documentation
-- `pydoc -w quran_cli.py`
+- 
+  
 ## TODO
 1. Remove redundant code.
 2. More functional programming.
