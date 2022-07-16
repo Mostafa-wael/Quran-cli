@@ -1,11 +1,33 @@
 {
-    "devDependencies": {
-        "@types/node-fetch": "^2.6.2"
-    },
-    "dependencies": {
-        "node-fetch": "^2.6.7",
-        "node-mpv": "^1.5.0",
-        "prettytable": "^0.3.1",
-        "ts-command-line-args": "^2.3.1"
-    }
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.2"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7",
+    "node-mpv": "^1.5.0",
+    "prettytable": "^0.3.1",
+    "ts-command-line-args": "^2.3.1"
+  },
+  "name": "quran-cli",
+  "description": "A simple command line interface for listening to Quran. ## Used API [mp3quran](https://mp3quran.net/eng/api) ## Installation - `npm install` - Install **mpv** as it is required for playing the audio.   - Debian based distributions `sudo add-apt-repository ppa:mc3man/mpv-tests` `sudo apt update && sudo apt install mpv`   - Windows [Follow This link](https://mpv.io/installation/#:~:text=master%20is%20recommended.-,Windows,-All%20binary%20packages)",
+  "version": "1.0.0",
+  "main": "quran-cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mostafa-wael/Quran-cli.git"
+  },
+  "keywords": [
+    "quran",
+    "cli",
+    "radio"
+  ],
+  "author": "MostafaWael AhmedIhab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mostafa-wael/Quran-cli/issues"
+  },
+  "homepage": "https://github.com/Mostafa-wael/Quran-cli#readme"
 }
