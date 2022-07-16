@@ -40,11 +40,17 @@ var node_fetch_1 = require("node-fetch");
 var helperFunctions_1 = require("../../utilities/helperFunctions");
 var url = "https://api.mp3quran.net/radios/radio_english.json";
 function getData() {
-    return node_fetch_1.default(url)
-        .then(function (res) { return res.json(); })
-        .then(function (res) {
-        return res['radios'];
-    });
+    try {
+        return node_fetch_1.default(url)
+            .then(function (res) { return res.json(); })
+            .then(function (res) {
+            return res['radios'];
+        });
+    }
+    catch (err) {
+        console.log("No available Internet connection");
+        process.exit(1);
+    }
 }
 function getRadioNamesList() {
     return __awaiter(this, void 0, void 0, function () {

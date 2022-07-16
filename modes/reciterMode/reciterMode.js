@@ -42,16 +42,24 @@ var data_2 = require("../../utilities/data");
 var url = "https://mp3quran.net/api/_english.php?";
 function getData() {
     return __awaiter(this, void 0, void 0, function () {
-        var data, data_1;
+        var data, data_1, err_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, node_fetch_1.default(url)];
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    return [4, node_fetch_1.default(url)];
                 case 1:
                     data = _a.sent();
                     return [4, data.json()];
                 case 2:
                     data_1 = _a.sent();
                     return [2, data_1['reciters']];
+                case 3:
+                    err_1 = _a.sent();
+                    console.log("No available Internet connection");
+                    process.exit(1);
+                    return [3, 4];
+                case 4: return [2];
             }
         });
     });
@@ -128,7 +136,7 @@ function getSurahURL(reciterIndex, surahIndex) {
 }
 function showReciterAvailableSuras(reciterIndex) {
     return __awaiter(this, void 0, void 0, function () {
-        var availableSuras, err_1;
+        var availableSuras, err_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -139,7 +147,7 @@ function showReciterAvailableSuras(reciterIndex) {
                     helperFunctions_1.showListIndex(availableSuras, 'Surah Index', 'Name', true);
                     return [3, 3];
                 case 2:
-                    err_1 = _a.sent();
+                    err_2 = _a.sent();
                     console.log("Reciter not available, you can list the available reciters using the '-r' option.");
                     return [3, 3];
                 case 3: return [2];
@@ -150,7 +158,7 @@ function showReciterAvailableSuras(reciterIndex) {
 exports.showReciterAvailableSuras = showReciterAvailableSuras;
 function runSurah(reciterIndex, surahIndex) {
     return __awaiter(this, void 0, void 0, function () {
-        var reciterData, reciterName, _a, err_2;
+        var reciterData, reciterName, _a, err_3;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
@@ -168,7 +176,7 @@ function runSurah(reciterIndex, surahIndex) {
                     _a.apply(void 0, [_b.sent()]);
                     return [3, 5];
                 case 4:
-                    err_2 = _b.sent();
+                    err_3 = _b.sent();
                     if (data_2.surasDictionary[surahIndex] === undefined)
                         console.log("Surah not available, you can check the available suras for the specified reciter by passing the reciter index only to the '-c' option.");
                     else
