@@ -2,7 +2,10 @@ import fetch from "node-fetch";
 import { showListIndex , runFromURL } from "../../utilities/helperFunctions";
 const url: string = "https://api.mp3quran.net/radios/radio_english.json";
 
-// Get the available radios data
+/**
+ * 
+ * @returns The available radios data from the endpoint
+ */
 function getRadioData(): Promise<object> {
     return fetch(url)
             // the JSON body is taken from the response
@@ -12,6 +15,10 @@ function getRadioData(): Promise<object> {
             })
 }
 
+/**
+ * 
+ * @returns The radio names list
+ */
 async function getRadioNamesList(): Promise<string[]> {
     let data  = await getRadioData();
     // loop on json and extract the radio names
@@ -22,6 +29,9 @@ async function getRadioNamesList(): Promise<string[]> {
     return radios;
 }
 
+/**
+ * Show all the available radios in a pretty table
+ */
 function showAllRadios(){
     getRadioNamesList().then(res => {
        showListIndex(res, 'Radio Index', 'Name');
@@ -29,47 +39,34 @@ function showAllRadios(){
         console.log(err);
     });
 }
-/*
-    Get radio name from its index
-
-    Args:
-        radioIndex (int): The index of the radio in the query data
-
-    Returns:
-        str: The radio name
-    
-*/
+/**
+ * 
+ * @param radioIndex The index of the radio in the query data
+ * @returns The specified radio name
+ */
 async function getRadioName(radioIndex: number) : Promise<string> {
     let data = await getRadioData();
     return data[radioIndex]['name'] ;
 }
 
-/*
-    Get radio URL from its index
 
-    Args:
-        radioIndex (int): The index of the radio in the query data
-
-    Returns:
-        str: The radio URL
-*/
-
+/**
+ * 
+ * @param radioIndex The index of the radio in the query data
+ * @returns The URL of the radio
+ */
 async function getRadioURL(radioIndex: number) : Promise<string> {
     let data = await getRadioData()
     return data[radioIndex]['radio_url']
 }
-/*
-    Run the radio specified
 
-    Args:
-        radioIndex (int): The index of the radio in the query data
-
-*/
-
+/**
+ * Runs the specified radio
+ * @param radioIndex The index of the radio in the query data
+ */
 async function runRadio(radioIndex: number) {
     let radioName = await getRadioName(radioIndex);
     console.log(`Playing ${radioName}`);
     runFromURL(await getRadioURL(radioIndex))
 }
 
-showAllRadios();

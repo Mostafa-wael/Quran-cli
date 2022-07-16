@@ -35,14 +35,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var node_fetch_1 = require("node-fetch");
 var helperFunctions_1 = require("../../utilities/helperFunctions");
 var url = "https://api.mp3quran.net/radios/radio_english.json";
-// Get the available radios data
 function getRadioData() {
-    return (0, node_fetch_1["default"])(url)
-        // the JSON body is taken from the response
+    return node_fetch_1.default(url)
         .then(function (res) { return res.json(); })
         .then(function (res) {
         return res['radios'];
@@ -53,93 +51,66 @@ function getRadioNamesList() {
         var data, radios, i;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, getRadioData()];
+                case 0: return [4, getRadioData()];
                 case 1:
                     data = _a.sent();
                     radios = [];
                     for (i = 0; i < data.length; i++) {
                         radios.push(data[i]['name']);
                     }
-                    return [2 /*return*/, radios];
+                    return [2, radios];
             }
         });
     });
 }
 function showAllRadios() {
     getRadioNamesList().then(function (res) {
-        (0, helperFunctions_1.showListIndex)(res, 'Radio Index', 'Name');
-    })["catch"](function (err) {
+        helperFunctions_1.showListIndex(res, 'Radio Index', 'Name');
+    }).catch(function (err) {
         console.log(err);
     });
 }
-/*
-    Get radio name from its index
-
-    Args:
-        radioIndex (int): The index of the radio in the query data
-
-    Returns:
-        str: The radio name
-    
-*/
 function getRadioName(radioIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, getRadioData()];
+                case 0: return [4, getRadioData()];
                 case 1:
                     data = _a.sent();
-                    return [2 /*return*/, data[radioIndex]['name']];
+                    return [2, data[radioIndex]['name']];
             }
         });
     });
 }
-/*
-    Get radio URL from its index
-
-    Args:
-        radioIndex (int): The index of the radio in the query data
-
-    Returns:
-        str: The radio URL
-*/
 function getRadioURL(radioIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, getRadioData()];
+                case 0: return [4, getRadioData()];
                 case 1:
                     data = _a.sent();
-                    return [2 /*return*/, data[radioIndex]['radio_url']];
+                    return [2, data[radioIndex]['radio_url']];
             }
         });
     });
 }
-/*
-    Run the radio specified
-
-    Args:
-        radioIndex (int): The index of the radio in the query data
-
-*/
 function runRadio(radioIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var radioName, _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
-                case 0: return [4 /*yield*/, getRadioName(radioIndex)];
+                case 0: return [4, getRadioName(radioIndex)];
                 case 1:
                     radioName = _b.sent();
-                    console.log("Playing ".concat(radioName));
+                    console.log("Playing " + radioName);
                     _a = helperFunctions_1.runFromURL;
-                    return [4 /*yield*/, getRadioURL(radioIndex)];
+                    return [4, getRadioURL(radioIndex)];
                 case 2:
                     _a.apply(void 0, [_b.sent()]);
-                    return [2 /*return*/];
+                    return [2];
             }
         });
     });
 }
-showAllRadios();

@@ -1,6 +1,5 @@
 "use strict";
-exports.__esModule = true;
-exports.runFromURL = exports.showListIndex = void 0;
+Object.defineProperty(exports, "__esModule", { value: true });
 var PrettyTable = require('prettytable');
 var mpv = require('node-mpv');
 var data_1 = require("./data");
@@ -9,18 +8,17 @@ function showListIndex(arr, header1, header2, suras) {
     var pt = new PrettyTable();
     pt.fieldNames([header1, header2]);
     for (var i = 0; i < arr.length; i++) {
-        if (suras) {
+        if (!suras) {
             pt.addRow([i, arr[i]]);
         }
         else {
             pt.addRow([arr[i], data_1.surasDictionary[arr[i]]]);
         }
     }
-    //console.log(pt.toString());
+    console.log(pt.toString());
 }
 exports.showListIndex = showListIndex;
 function runFromURL(url) {
-    // run MPV subprocess
     var mpvPlayer = new mpv({
         "verbose": false,
         "audio_only": true
@@ -29,7 +27,20 @@ function runFromURL(url) {
     mpvPlayer.play();
     mpvPlayer.on('stopped', function () {
         console.log("Finished playing");
-        process.exit(1); // close the program
+        process.exit(1);
     });
 }
 exports.runFromURL = runFromURL;
+var readline = require("readline");
+var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+function getInput(prompt) {
+    return new Promise(function (resolve, reject) {
+        rl.question(prompt, function (answer) {
+            resolve(answer);
+        });
+    });
+}
+exports.getInput = getInput;

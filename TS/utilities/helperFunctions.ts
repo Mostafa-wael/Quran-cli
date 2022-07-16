@@ -6,7 +6,7 @@ export function showListIndex(arr: string[], header1: string, header2: string , 
     let pt = new PrettyTable();
     pt.fieldNames([header1, header2]);
     for (let i = 0; i < arr.length; i++) {
-        if (suras) {
+        if (!suras) {
         pt.addRow([i, arr[i]]);
         } else {
             pt.addRow([arr[i], surasDictionary[arr[i]]]);
