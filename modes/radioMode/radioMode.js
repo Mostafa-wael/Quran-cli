@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var node_fetch_1 = require("node-fetch");
 var helperFunctions_1 = require("../../utilities/helperFunctions");
 var url = "https://api.mp3quran.net/radios/radio_english.json";
-function getRadioData() {
+function getData() {
     return node_fetch_1.default(url)
         .then(function (res) { return res.json(); })
         .then(function (res) {
@@ -48,43 +48,31 @@ function getRadioData() {
 }
 function getRadioNamesList() {
     return __awaiter(this, void 0, void 0, function () {
-        var data, radios, i;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4, getRadioData()];
+        var data, radios, _i, _a, d;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4, getData()];
                 case 1:
-                    data = _a.sent();
+                    data = _b.sent();
                     radios = [];
-                    for (i = 0; i < data.length; i++) {
-                        radios.push(data[i]['name']);
+                    for (_i = 0, _a = data; _i < _a.length; _i++) {
+                        d = _a[_i];
+                        radios.push(d['Name']);
                     }
                     return [2, radios];
             }
         });
     });
 }
-function getRadioName(radioIndex) {
+function getSpecificRadioData(radioIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, getRadioData()];
+                case 0: return [4, getData()];
                 case 1:
                     data = _a.sent();
-                    return [2, data[radioIndex]['name']];
-            }
-        });
-    });
-}
-function getRadioURL(radioIndex) {
-    return __awaiter(this, void 0, void 0, function () {
-        var data;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4, getRadioData()];
-                case 1:
-                    data = _a.sent();
-                    return [2, data[radioIndex]['radio_url']];
+                    return [2, data[radioIndex]];
             }
         });
     });
@@ -99,16 +87,19 @@ function showAllRadios() {
 exports.showAllRadios = showAllRadios;
 function runRadio(radioIndex) {
     return __awaiter(this, void 0, void 0, function () {
-        var radioName, _a;
+        var data, radioName, _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
-                case 0: return [4, getRadioName(radioIndex)];
+                case 0: return [4, getSpecificRadioData(radioIndex)];
                 case 1:
+                    data = _b.sent();
+                    return [4, data['name']];
+                case 2:
                     radioName = _b.sent();
                     console.log("Radio Channel: " + radioName);
                     _a = helperFunctions_1.runFromURL;
-                    return [4, getRadioURL(radioIndex)];
-                case 2:
+                    return [4, data['radio_url']];
+                case 3:
                     _a.apply(void 0, [_b.sent()]);
                     return [2];
             }

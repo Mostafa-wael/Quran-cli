@@ -1,12 +1,13 @@
 import fetch from "node-fetch";
 import { showListIndex, runFromURL } from "../../utilities/helperFunctions";
+
 const url: string = "https://api.mp3quran.net/radios/radio_english.json";
 
 /**
  * 
  * @returns The available radios data from the endpoint
  */
-function getRadioData(): Promise<object> {
+function getData(): Promise<object> {
     return fetch(url)
         // the JSON body is taken from the response
         .then(res => res.json())
@@ -19,31 +20,22 @@ function getRadioData(): Promise<object> {
  * @returns The radio names list
  */
 async function getRadioNamesList(): Promise<string[]> {
-    let data = await getRadioData();
+    let data = await getData();
     // loop on json and extract the radio names
     let radios: string[] = [];
-    for (let i = 0; i < data.length; i++) {
-        radios.push(data[i]['name']);
-    }
+    for(let d of <any>data) {
+        radios.push(d['Name']);
+    } 
     return radios;
 }
 /**
  * 
  * @param radioIndex The index of the radio in the query data
- * @returns The specified radio name
+ * @returns The specified radio data from the endpoint
  */
- async function getRadioName(radioIndex: number): Promise<string> {
-    let data = await getRadioData();
-    return data[radioIndex]['name'];
-}
-/**
- * 
- * @param radioIndex The index of the radio in the query data
- * @returns The URL of the radio
- */
-async function getRadioURL(radioIndex: number): Promise<string> {
-    let data = await getRadioData()
-    return data[radioIndex]['radio_url']
+async function getSpecificRadioData(radioIndex: number): Promise<object> {
+    let data = await getData();
+    return data[radioIndex];
 }
 /**
  * Show all the available radios in a pretty table
@@ -60,8 +52,9 @@ export function showAllRadios() {
  * @param radioIndex The index of the radio in the query data
  */
 export async function runRadio(radioIndex: number) {
-    let radioName = await getRadioName(radioIndex);
+    let data = await getSpecificRadioData(radioIndex);
+    let radioName = await data['name'];
     console.log(`Radio Channel: ${radioName}`);
-    runFromURL(await getRadioURL(radioIndex))
+    runFromURL(await data['radio_url']);
 }
 

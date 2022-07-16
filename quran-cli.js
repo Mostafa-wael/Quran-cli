@@ -9,7 +9,7 @@ if (args.radio >= 0) {
 }
 else if (args.reciterSurah.length > 0) {
     if (args.reciterSurah.length == 1) {
-        reciterMode_1.showAvailableSuras(args.reciterSurah[0]);
+        reciterMode_1.showReciterAvailableSuras(args.reciterSurah[0]);
     }
     else {
         reciterMode_1.runSurah(args.reciterSurah[0], args.reciterSurah[1]);
@@ -22,5 +22,5 @@ else if (args.showReciters == true) {
     reciterMode_1.showAllReciters();
 }
 else if (args.showSuras == true) {
-    reciterMode_1.showAvailableSuras(0);
+    reciterMode_1.showReciterAvailableSuras(0);
 }

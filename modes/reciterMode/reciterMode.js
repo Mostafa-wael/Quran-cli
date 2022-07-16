@@ -40,7 +40,7 @@ var node_fetch_1 = require("node-fetch");
 var helperFunctions_1 = require("../../utilities/helperFunctions");
 var data_2 = require("../../utilities/data");
 var url = "https://mp3quran.net/api/_english.php?";
-function getReciters() {
+function getData() {
     return __awaiter(this, void 0, void 0, function () {
         var data, data_1;
         return __generator(this, function (_a) {
@@ -58,40 +58,28 @@ function getReciters() {
 }
 function getReciterNamesList() {
     return __awaiter(this, void 0, void 0, function () {
-        var data, reciters, i;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4, getReciters()];
+        var data, reciters, _i, _a, d;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4, getData()];
                 case 1:
-                    data = _a.sent();
+                    data = _b.sent();
                     reciters = [];
-                    for (i = 0; i < data.length; i++) {
-                        reciters.push(data[i]['name']);
+                    for (_i = 0, _a = data; _i < _a.length; _i++) {
+                        d = _a[_i];
+                        reciters.push(d['Name']);
                     }
                     return [2, reciters];
             }
         });
     });
 }
-function getReciterName(reciterIndex) {
+function getSpecificReciterData(reciterIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, getReciters()];
-                case 1:
-                    data = _a.sent();
-                    return [2, data[reciterIndex]['name']];
-            }
-        });
-    });
-}
-function getReciterData(reciterIndex) {
-    return __awaiter(this, void 0, void 0, function () {
-        var data;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4, getReciters()];
+                case 0: return [4, getData()];
                 case 1:
                     data = _a.sent();
                     return [2, data[reciterIndex]];
@@ -109,12 +97,12 @@ function showAllReciters() {
     });
 }
 exports.showAllReciters = showAllReciters;
-function getAvailableSuras(reciterIndex) {
+function getReciterAvailableSuras(reciterIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var reciterData, availableSuras;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, getReciterData(reciterIndex)];
+                case 0: return [4, getSpecificReciterData(reciterIndex)];
                 case 1:
                     reciterData = _a.sent();
                     availableSuras = reciterData['suras'].split(",");
@@ -123,13 +111,13 @@ function getAvailableSuras(reciterIndex) {
         });
     });
 }
-exports.getAvailableSuras = getAvailableSuras;
+exports.getReciterAvailableSuras = getReciterAvailableSuras;
 function getSurahURL(reciterIndex, surahIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data, url;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, getReciterData(reciterIndex)];
+                case 0: return [4, getSpecificReciterData(reciterIndex)];
                 case 1:
                     data = _a.sent();
                     url = data['Server'] + "/" + String(surahIndex).padStart(3, '0') + ".mp3";
@@ -138,12 +126,12 @@ function getSurahURL(reciterIndex, surahIndex) {
         });
     });
 }
-function showAvailableSuras(reciterIndex) {
+function showReciterAvailableSuras(reciterIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var availableSuras;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, getAvailableSuras(reciterIndex)];
+                case 0: return [4, getReciterAvailableSuras(reciterIndex)];
                 case 1:
                     availableSuras = _a.sent();
                     helperFunctions_1.showListIndex(availableSuras, 'Surah Index', 'Name', true);
@@ -152,19 +140,22 @@ function showAvailableSuras(reciterIndex) {
         });
     });
 }
-exports.showAvailableSuras = showAvailableSuras;
+exports.showReciterAvailableSuras = showReciterAvailableSuras;
 function runSurah(reciterIndex, surahIndex) {
     return __awaiter(this, void 0, void 0, function () {
-        var reciterName, _a;
+        var reciterData, reciterName, _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
-                case 0: return [4, getReciterName(reciterIndex)];
+                case 0: return [4, getSpecificReciterData(reciterIndex)];
                 case 1:
+                    reciterData = _b.sent();
+                    return [4, reciterData['name']];
+                case 2:
                     reciterName = _b.sent();
                     console.log("Reciter: " + reciterName + ", Surah: " + data_2.surasDictionary[surahIndex]);
                     _a = helperFunctions_1.runFromURL;
                     return [4, getSurahURL(reciterIndex, surahIndex)];
-                case 2:
+                case 3:
                     _a.apply(void 0, [_b.sent()]);
                     return [2];
             }
