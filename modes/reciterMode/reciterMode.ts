@@ -34,7 +34,7 @@ async function getReciterNamesList(): Promise<string[]> {
 /**
  * Show all the available reciters in a pretty table
  */
-function showAllReciters(){
+export function showAllReciters(){
     getReciterNamesList()
     .then(res => {
        showListIndex(res, 'Reciter Index', 'Name');
@@ -67,7 +67,7 @@ async function getReciterData(reciterIndex: number) : Promise<string> {
  * @param reciterIndex The index of the reciter in the query data
  * @returns all the available suras for a specified reciter
  */
-async function getAvailableSuras(reciterIndex: number) : Promise<string[]> {
+export async function getAvailableSuras(reciterIndex: number) : Promise<string[]> {
    
     let reciterData = await getReciterData(reciterIndex);
     let availableSuras = reciterData['suras'].split(",");
@@ -78,7 +78,7 @@ async function getAvailableSuras(reciterIndex: number) : Promise<string[]> {
  * Shows all the available suras for a specified reciter
  * @param reciterIndex The index of the reciter in the query data
  */
-async function  showAvailableSuras(reciterIndex: number) {
+export async function  showAvailableSuras(reciterIndex: number) {
     
     let availableSuras = await getAvailableSuras(reciterIndex);
     showListIndex(availableSuras, 'Surah Index', 'Name', true);

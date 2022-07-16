@@ -70,6 +70,7 @@ function showAllRadios() {
         console.log(err);
     });
 }
+exports.showAllRadios = showAllRadios;
 function getRadioName(radioIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data;

@@ -10,3 +10,6 @@ if (args.radio >= 0) {
 else if (args.reciterSurah.length > 0) {
     reciterMode_1.runSurah(args.reciterSurah[0], args.reciterSurah[1]);
 }
+else if (args.showRadio == true) {
+    radioMode_1.showAllRadios();
+}

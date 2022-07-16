@@ -4,6 +4,8 @@ export interface CLIArgs {
     version?: boolean;
     radio?: number;
     showRadio?: boolean;
+    showReciters?: boolean;
+    showSuras?: boolean;
     reciterSurah?: number[];
     help?: boolean;
 }
@@ -16,6 +18,8 @@ export class CommandLine {
             radio: { type: Number , optional: true,  alias: 'd' , description: 'Specify the radio channel to listen to' },
             reciterSurah: { type: Number , multiple: true, optional: true,  alias: 'c' , description: 'Specify the reciter and the surah to listen to' },
             showRadio: { type: Boolean, optional: true, alias: 'n', description: 'Prints this usage guide' },
+            showReciters: { type: Boolean, optional: true, alias: 'r', description: 'Prints this usage guide' },
+            showSuras: { type: Boolean, optional: true, alias: 's', description: 'Prints this usage guide' },
             version: { type: Boolean, optional: true, alias: 'v', description: 'Prints this usage guide' },
             help: { type: Boolean, optional: true, alias: 'h', description: 'Prints this usage guide' },
         },
@@ -27,6 +31,9 @@ export class CommandLine {
         );
         if (args.version === true) {
             console.log("V1.0.0");
+        }
+        if(args.reciterSurah == undefined) {
+            args.reciterSurah = [];
         }
 
         return args

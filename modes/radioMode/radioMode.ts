@@ -32,7 +32,7 @@ async function getRadioNamesList(): Promise<string[]> {
 /**
  * Show all the available radios in a pretty table
  */
-function showAllRadios(){
+export function showAllRadios(){
     getRadioNamesList().then(res => {
        showListIndex(res, 'Radio Index', 'Name');
     }).catch(err => {
