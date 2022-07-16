@@ -56,4 +56,5 @@ Options
 13. Extract data from the xml.
 14. Make a vs code extension.
 15. Configure the pipelines.
-16. close in case of errors
+16. close in case of errors.
+17. add general try-catch and pretty logs.

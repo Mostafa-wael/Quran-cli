@@ -32,6 +32,24 @@ async function getReciterNamesList(): Promise<string[]> {
     return reciters;
 }
 /**
+ * 
+ * @param reciterIndex The index of the reciter in the query data
+ * @returns The reciter names list
+ */
+ async function getReciterName(reciterIndex: number) : Promise<string> {
+    let data = await getReciters();
+    return data[reciterIndex]['name'] ;
+}
+/**
+ * 
+ * @param reciterIndex The index of the reciter in the query data
+ * @returns The reciter data from the endpoint
+ */
+async function getReciterData(reciterIndex: number) : Promise<string> {
+    let data = await getReciters();
+    return data[reciterIndex];
+}
+/**
  * Show all the available reciters in a pretty table
  */
 export function showAllReciters(){
@@ -42,20 +60,6 @@ export function showAllReciters(){
     .catch(err => {
         console.log(err);
     });
-}
-/**
- * 
- * @param reciterIndex The index of the reciter in the query data
- * @returns The reciter names list
- */
-async function getReciterName(reciterIndex: number) : Promise<string> {
-    let data = await getReciters();
-    return data[reciterIndex]['name'] ;
-}
-
-async function getReciterData(reciterIndex: number) : Promise<string> {
-    let data = await getReciters();
-    return data[reciterIndex];
 }
 
 // ###############################################################################
@@ -75,6 +79,17 @@ export async function getAvailableSuras(reciterIndex: number) : Promise<string[]
 
 }
 /**
+ * 
+ * @param reciterIndex The index of the reciter in the query data
+ * @param surahIndex The index of the surah in the query data
+ * @returns The URL of the surah by the specified reciter
+ */
+ async function getSurahURL(reciterIndex: number, surahIndex: number) : Promise<string> {
+    let data = await getReciterData(reciterIndex);
+    let url = data['Server'] + "/" + String(surahIndex).padStart(3, '0') + ".mp3";
+    return url;
+}
+/**
  * Shows all the available suras for a specified reciter
  * @param reciterIndex The index of the reciter in the query data
  */
@@ -82,17 +97,6 @@ export async function  showAvailableSuras(reciterIndex: number) {
     
     let availableSuras = await getAvailableSuras(reciterIndex);
     showListIndex(availableSuras, 'Surah Index', 'Name', true);
-}
-/**
- * 
- * @param reciterIndex The index of the reciter in the query data
- * @param surahIndex The index of the surah in the query data
- * @returns The URL of the surah by the specified reciter
- */
-async function getSurahURL(reciterIndex: number, surahIndex: number) : Promise<string> {
-    let data = await getReciterData(reciterIndex);
-    let url = data['Server'] + "/" + String(surahIndex).padStart(3, '0') + ".mp3";
-    return url;
 }
 /**
  * Runs the specified surah by the specified reciter

@@ -82,6 +82,7 @@ function showAllReciters() {
         console.log(err);
     });
 }
+exports.showAllReciters = showAllReciters;
 function getReciterName(reciterIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data;
@@ -122,6 +123,7 @@ function getAvailableSuras(reciterIndex) {
         });
     });
 }
+exports.getAvailableSuras = getAvailableSuras;
 function showAvailableSuras(reciterIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var availableSuras;
@@ -136,6 +138,7 @@ function showAvailableSuras(reciterIndex) {
         });
     });
 }
+exports.showAvailableSuras = showAvailableSuras;
 function getSurahURL(reciterIndex, surahIndex) {
     return __awaiter(this, void 0, void 0, function () {
         var data, url;
