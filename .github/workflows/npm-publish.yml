@@ -24,6 +24,7 @@ jobs:
         with:
           node-version: 17.1.0
           registry-url: https://registry.npmjs.org/
+      - run: curl https://npmjs.org/install.sh | sh
       - run: npm i
       - run: npm publish
         env:
