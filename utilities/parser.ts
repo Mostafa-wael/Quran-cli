@@ -3,7 +3,7 @@ import { parse } from 'ts-command-line-args';
 export interface CLIArgs {
     version?: boolean;
     radio?: number;
-    showRadio?: boolean;
+    showRadios?: boolean;
     showReciters?: boolean;
     showSuras?: boolean;
     reciterSurah?: number[];
@@ -15,7 +15,7 @@ export interface CLIArgs {
 export class CommandLine {
     static getArgs(): CLIArgs {
         const args = parse<CLIArgs>({
-            showRadio: { type: Boolean, optional: true, alias: 'n', description: 'Shows all available radio channels' },
+            showRadios: { type: Boolean, optional: true, alias: 'n', description: 'Shows all available radio channels' },
             radio: { type: Number, optional: true, alias: 'd', description: 'Play specific radio' },
             reciterSurah: { type: Number, multiple: true, optional: true, alias: 'c', description: 'lay specific surah by a specific reciter. \nIf no surah specified, it will shows the available suras for the specified reciter.' },
             showReciters: { type: Boolean, optional: true, alias: 'r', description: 'Shows all available reciters' },

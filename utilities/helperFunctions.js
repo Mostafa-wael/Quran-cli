@@ -8,11 +8,11 @@ function showListIndex(arr, header1, header2, suras) {
     var pt = new PrettyTable();
     pt.fieldNames([header1, header2]);
     for (var i = 0; i < arr.length; i++) {
-        if (!suras) {
-            pt.addRow([i, arr[i]]);
+        if (suras) {
+            pt.addRow([arr[i], data_1.surasDictionary[arr[i]]]);
         }
         else {
-            pt.addRow([arr[i], data_1.surasDictionary[arr[i]]]);
+            pt.addRow([i, arr[i]]);
         }
     }
     console.log(pt.toString());

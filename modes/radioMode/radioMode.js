@@ -87,10 +87,12 @@ function showAllRadios() {
 exports.showAllRadios = showAllRadios;
 function runRadio(radioIndex) {
     return __awaiter(this, void 0, void 0, function () {
-        var data, radioName, _a;
+        var data, radioName, _a, err_1, list;
         return __generator(this, function (_b) {
             switch (_b.label) {
-                case 0: return [4, getSpecificRadioData(radioIndex)];
+                case 0:
+                    _b.trys.push([0, 4, , 6]);
+                    return [4, getSpecificRadioData(radioIndex)];
                 case 1:
                     data = _b.sent();
                     return [4, data['name']];
@@ -101,7 +103,15 @@ function runRadio(radioIndex) {
                     return [4, data['radio_url']];
                 case 3:
                     _a.apply(void 0, [_b.sent()]);
-                    return [2];
+                    return [3, 6];
+                case 4:
+                    err_1 = _b.sent();
+                    return [4, getRadioNamesList()];
+                case 5:
+                    list = _b.sent();
+                    console.log("Please, enter an index from 0 to " + (list.length - 1) + "\nYou can list all the radio channels using the '-n' option.");
+                    return [3, 6];
+                case 6: return [2];
             }
         });
     });

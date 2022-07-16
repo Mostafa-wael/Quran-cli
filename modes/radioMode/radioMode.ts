@@ -52,9 +52,15 @@ export function showAllRadios() {
  * @param radioIndex The index of the radio in the query data
  */
 export async function runRadio(radioIndex: number) {
-    let data = await getSpecificRadioData(radioIndex);
-    let radioName = await data['name'];
-    console.log(`Radio Channel: ${radioName}`);
-    runFromURL(await data['radio_url']);
+    try{
+        let data = await getSpecificRadioData(radioIndex);
+        let radioName = await data['name'];
+        console.log(`Radio Channel: ${radioName}`);
+        runFromURL(await data['radio_url']);
+    }
+    catch(err){
+        let list = await getRadioNamesList();
+        console.log("Please, enter an index from 0 to " + (list.length - 1)+ "\nYou can list all the radio channels using the '-n' option.");
+    }
 }
 

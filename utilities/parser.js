@@ -6,7 +6,7 @@ var CommandLine = (function () {
     }
     CommandLine.getArgs = function () {
         var args = ts_command_line_args_1.parse({
-            showRadio: { type: Boolean, optional: true, alias: 'n', description: 'Shows all available radio channels' },
+            showRadios: { type: Boolean, optional: true, alias: 'n', description: 'Shows all available radio channels' },
             radio: { type: Number, optional: true, alias: 'd', description: 'Play specific radio' },
             reciterSurah: { type: Number, multiple: true, optional: true, alias: 'c', description: 'lay specific surah by a specific reciter. \nIf no surah specified, it will shows the available suras for the specified reciter.' },
             showReciters: { type: Boolean, optional: true, alias: 'r', description: 'Shows all available reciters' },

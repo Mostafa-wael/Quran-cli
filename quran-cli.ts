@@ -16,12 +16,13 @@ else if (args.reciterSurah.length > 0) {
         runSurah(args.reciterSurah[0], args.reciterSurah[1]);
     }
 }
-else if (args.showRadio == true) {
+else if (args.showRadios == true) {
     showAllRadios();
 }
 else if (args.showReciters == true) {
     showAllReciters();
 }
 else if (args.showSuras == true) {
+    // TODO: use the values from the surasDictionary
     showReciterAvailableSuras(0); // we are sure that the reciter 0 has all the suras.
 }

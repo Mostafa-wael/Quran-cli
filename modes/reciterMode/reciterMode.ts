@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { showListIndex , runFromURL } from "../../utilities/helperFunctions";
+import { showListIndex, runFromURL } from "../../utilities/helperFunctions";
 import { surasDictionary } from "../../utilities/data";
 
 
@@ -23,12 +23,12 @@ async function getData(): Promise<object> {
  * @returns The reciter names list
  */
 async function getReciterNamesList(): Promise<string[]> {
-    let data  = await getData();
+    let data = await getData();
     // loop on json and extract the reciter names
-    let reciters : string[] = [];
-    for(let d of <any>data) {
+    let reciters: string[] = [];
+    for (let d of <any>data) {
         reciters.push(d['Name']);
-    }  
+    }
     return reciters;
 }
 /**
@@ -36,21 +36,21 @@ async function getReciterNamesList(): Promise<string[]> {
  * @param reciterIndex The index of the reciter in the query data
  * @returns The reciter data from the endpoint
  */
-async function getSpecificReciterData(reciterIndex: number) : Promise<string> {
+async function getSpecificReciterData(reciterIndex: number): Promise<string> {
     let data = await getData();
     return data[reciterIndex];
 }
 /**
  * Show all the available reciters in a pretty table
  */
-export function showAllReciters(){
+export function showAllReciters() {
     getReciterNamesList()
-    .then(res => {
-       showListIndex(res, 'Reciter Index', 'Name');
-    })
-    .catch(err => {
-        console.log(err);
-    });
+        .then(res => {
+            showListIndex(res, 'Reciter Index', 'Name');
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }
 
 // ###############################################################################
@@ -62,8 +62,8 @@ export function showAllReciters(){
  * @param reciterIndex The index of the reciter in the query data
  * @returns all the available suras for a specified reciter
  */
-export async function getReciterAvailableSuras(reciterIndex: number) : Promise<string[]> {
-   
+export async function getReciterAvailableSuras(reciterIndex: number): Promise<string[]> {
+    
     let reciterData = await getSpecificReciterData(reciterIndex);
     let availableSuras = reciterData['suras'].split(",");
     return availableSuras;
@@ -75,7 +75,7 @@ export async function getReciterAvailableSuras(reciterIndex: number) : Promise<s
  * @param surahIndex The index of the surah in the query data
  * @returns The URL of the surah by the specified reciter
  */
- async function getSurahURL(reciterIndex: number, surahIndex: number) : Promise<string> {
+async function getSurahURL(reciterIndex: number, surahIndex: number): Promise<string> {
     let data = await getSpecificReciterData(reciterIndex);
     let url = data['Server'] + "/" + String(surahIndex).padStart(3, '0') + ".mp3";
     return url;
@@ -84,10 +84,15 @@ export async function getReciterAvailableSuras(reciterIndex: number) : Promise<s
  * Shows all the available suras for a specified reciter
  * @param reciterIndex The index of the reciter in the query data
  */
-export async function  showReciterAvailableSuras(reciterIndex: number) {
-    
-    let availableSuras = await getReciterAvailableSuras(reciterIndex);
-    showListIndex(availableSuras, 'Surah Index', 'Name', true);
+export async function showReciterAvailableSuras(reciterIndex: number) {
+
+    try {
+        let availableSuras = await getReciterAvailableSuras(reciterIndex);
+        showListIndex(availableSuras, 'Surah Index', 'Name', true);
+    }
+    catch (err) {
+        console.log("Reciter not available, you can list the available reciters using the '-r' option.");
+    }
 }
 /**
  * Runs the specified surah by the specified reciter
@@ -95,8 +100,18 @@ export async function  showReciterAvailableSuras(reciterIndex: number) {
  * @param surahIndex The index of the surah in the query data
  */
 export async function runSurah(reciterIndex: number, surahIndex: number) {
-    let reciterData = await getSpecificReciterData(reciterIndex);
-    let reciterName = await reciterData['name'];
-    console.log(`Reciter: ${reciterName}, Surah: ${surasDictionary[surahIndex]}`);
-    runFromURL(await getSurahURL(reciterIndex, surahIndex))
+    try {
+        let reciterData = await getSpecificReciterData(reciterIndex);
+        let reciterName = await reciterData['name'];
+        console.log(`Reciter: ${reciterName}, Surah: ${surasDictionary[surahIndex]}`);
+        runFromURL(await getSurahURL(reciterIndex, surahIndex))
+    }
+    catch (err) {
+        if (surasDictionary[surahIndex] === undefined)
+            console.log("Surah not available, you can check the available suras for the specified reciter by passing the reciter index only to the '-c' option.");
+        else // invalid reciter index
+            console.log("Reciter not available, you can list the available reciters using the '-r' option.");
+
+    }
 }
+

@@ -15,7 +15,7 @@ else if (args.reciterSurah.length > 0) {
         reciterMode_1.runSurah(args.reciterSurah[0], args.reciterSurah[1]);
     }
 }
-else if (args.showRadio == true) {
+else if (args.showRadios == true) {
     radioMode_1.showAllRadios();
 }
 else if (args.showReciters == true) {
