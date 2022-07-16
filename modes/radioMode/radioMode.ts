@@ -29,8 +29,8 @@ async function getRadioNamesList(): Promise<string[]> {
     let data = await getData();
     // loop on json and extract the radio names
     let radios: string[] = [];
-    for (let d of <any>data) {
-        radios.push(d['Name']);
+    for (let i =0 ; i< (<any>data).length; i++) {
+        radios.push(data[i]['name']);
     }
     return radios;
 }
@@ -69,4 +69,5 @@ export async function runRadio(radioIndex: number) {
         console.log("Please, enter an index from 0 to " + (list.length - 1) + "\nYou can list all the radio channels using the '-n' option.");
     }
 }
+
 
