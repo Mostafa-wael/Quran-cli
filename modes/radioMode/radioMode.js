@@ -36,12 +36,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.runRadio = exports.showAllRadios = void 0;
 var node_fetch_1 = require("node-fetch");
 var helperFunctions_1 = require("../../utilities/helperFunctions");
 var url = "https://api.mp3quran.net/radios/radio_english.json";
 function getData() {
     try {
-        return node_fetch_1.default(url)
+        return (0, node_fetch_1.default)(url)
             .then(function (res) { return res.json(); })
             .then(function (res) {
             return res['radios'];
@@ -85,7 +86,7 @@ function getSpecificRadioData(radioIndex) {
 }
 function showAllRadios() {
     getRadioNamesList().then(function (res) {
-        helperFunctions_1.showListIndex(res, 'Radio Index', 'Name');
+        (0, helperFunctions_1.showListIndex)(res, 'Radio Index', 'Name');
     }).catch(function (err) {
         console.log(err);
     });
@@ -104,7 +105,7 @@ function runRadio(radioIndex) {
                     return [4, data['name']];
                 case 2:
                     radioName = _b.sent();
-                    console.log("Radio Channel: " + radioName);
+                    console.log("Radio Channel: ".concat(radioName));
                     _a = helperFunctions_1.runFromURL;
                     return [4, data['radio_url']];
                 case 3:

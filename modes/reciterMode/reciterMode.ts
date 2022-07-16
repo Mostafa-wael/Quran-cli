@@ -4,7 +4,7 @@ import { surasDictionary } from "../../utilities/data";
 
 
 const url: string = "https://mp3quran.net/api/_english.php?";
-s
+
 // ###############################################################################
 // # Reciters
 // ###############################################################################

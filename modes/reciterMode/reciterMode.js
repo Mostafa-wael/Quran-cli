@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.runSurah = exports.showReciterAvailableSuras = exports.getReciterAvailableSuras = exports.showAllReciters = void 0;
 var node_fetch_1 = require("node-fetch");
 var helperFunctions_1 = require("../../utilities/helperFunctions");
 var data_2 = require("../../utilities/data");
@@ -47,7 +48,7 @@ function getData() {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4, node_fetch_1.default(url)];
+                    return [4, (0, node_fetch_1.default)(url)];
                 case 1:
                     data = _a.sent();
                     return [4, data.json()];
@@ -98,7 +99,7 @@ function getSpecificReciterData(reciterIndex) {
 function showAllReciters() {
     getReciterNamesList()
         .then(function (res) {
-        helperFunctions_1.showListIndex(res, 'Reciter Index', 'Name');
+        (0, helperFunctions_1.showListIndex)(res, 'Reciter Index', 'Name');
     })
         .catch(function (err) {
         console.log(err);
@@ -144,7 +145,7 @@ function showReciterAvailableSuras(reciterIndex) {
                     return [4, getReciterAvailableSuras(reciterIndex)];
                 case 1:
                     availableSuras = _a.sent();
-                    helperFunctions_1.showListIndex(availableSuras, 'Surah Index', 'Name', true);
+                    (0, helperFunctions_1.showListIndex)(availableSuras, 'Surah Index', 'Name', true);
                     return [3, 3];
                 case 2:
                     err_2 = _a.sent();
@@ -169,7 +170,7 @@ function runSurah(reciterIndex, surahIndex) {
                     return [4, reciterData['name']];
                 case 2:
                     reciterName = _b.sent();
-                    console.log("Reciter: " + reciterName + ", Surah: " + data_2.surasDictionary[surahIndex]);
+                    console.log("Reciter: ".concat(reciterName, ", Surah: ").concat(data_2.surasDictionary[surahIndex]));
                     _a = helperFunctions_1.runFromURL;
                     return [4, getSurahURL(reciterIndex, surahIndex)];
                 case 3:
