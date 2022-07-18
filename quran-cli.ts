@@ -1,11 +1,12 @@
 import { CommandLine, CLIArgs } from "./utilities/parser";
 import { runRadio, showAllRadios } from "./modes/radioMode/radioMode";
 import { runSurah, showAllReciters, showReciterAvailableSuras } from "./modes/reciterMode/reciterMode";
+const pj = require('./package.json')
 
 const args: CLIArgs = CommandLine.getArgs();
 
 if(args.version == true) {
-    console.log("Version: 1.0.0");
+    console.log(pj.version)
 }
 else if (args.radio >= 0) {
     runRadio(args.radio);

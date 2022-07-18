@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CommandLine = void 0;
 var ts_command_line_args_1 = require("ts-command-line-args");
 var CommandLine = (function () {
     function CommandLine() {
     }
     CommandLine.getArgs = function () {
-        var args = (0, ts_command_line_args_1.parse)({
+        var args = ts_command_line_args_1.parse({
             showRadios: { type: Boolean, optional: true, alias: 'n', description: 'Shows all available radio channels' },
             radio: { type: Number, optional: true, alias: 'd', description: 'Play specific radio' },
             reciterSurah: { type: Number, multiple: true, optional: true, alias: 'c', description: 'lay specific surah by a specific reciter. \nIf no surah specified, it will shows the available suras for the specified reciter.' },
