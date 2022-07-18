@@ -1,6 +1,6 @@
 import { surasDictionary } from "./data";
 import colors = require('colors');
-import Table = require('../../custom_node_modules/cli-table3');
+import Table = require('../custom_node_modules/cli-table3');
 import mpv = require('node-mpv');
 
 export function print(str: string, color: string="white") 
