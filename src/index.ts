@@ -3,7 +3,7 @@ import { runRadio, showAllRadios } from "./modes/radioMode/radioMode";
 import { print } from "./utilities/helperFunctions";
 import colors = require('colors');
 import { runSurah, showAllReciters, showReciterAvailableSuras } from "./modes/reciterMode/reciterMode";
-const pj = require('./package.json')
+const pj = require('../package.json')
 
 
 

@@ -4,6 +4,7 @@
     "jsdoc": "^3.6.10"
   },
   "dependencies": {
+    "@quran-cli/q-cli": "^1.0.1",
     "@types/cli-table": "^0.3.0",
     "colors": "^1.4.0",
     "node-fetch": "^2.6.7",
