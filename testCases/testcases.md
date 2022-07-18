@@ -25,7 +25,7 @@
 | Expected Output | - The program should not run and display a warning message informing the user the valid radio range                                                |
 | Acctual Output  | - The program doesn't run ar all                                                                                                                                                 |
 | Step            | 1.  Open the project directory<br />2.  Open a terminal in the project directory <br />3.  Run command `node quran-cli.js -d -1` in terminal   |
-| Test Result     | - Fail                                                                                                                                                    |
+| Test Result     | - Pass                                                                                                                                                    |
 <br>
 <br>
 <br>
@@ -55,7 +55,7 @@
 
 | Test Case 006   | Check Version                                                                                                                            |
 | :-------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Expected Output | - The correct version should be displayed in the terminal(currently should be V1.0.0)                                                                                                 |
+| Expected Output | - The correct version should be displayed in the terminal(currently should be V1.1.0)                                                                                                 |
 | Acctual Output  | - **"V1.0.0"** is displayed in the terminal                                                                                                 |
 | Step            | 1.  Open the project directory<br />2.  Open a terminal in the project directory <br />3.  Run command `node quran-cli.js -v` in terminal   |
 | Test Result     | -Pass                                                                                                                                                     |
@@ -80,5 +80,5 @@
 | Expected Output | - A warning message should be displayed to the user that he used an undefined flag and display the usage guide alongside the message.                                                                                                 |
 | Actual Output  | -                                                                                                 |
 | Step            | 1.  Open the project directory<br />2.  Open a terminal in the project directory <br />3.  Run command `node quran-cli.js -z` in terminal   |
-| Test Result     | -                                                                                                                                                     |
+| Test Result     | - Pass                                                                                                                                                    |
 
