@@ -4,18 +4,15 @@
     "jsdoc": "^3.6.10"
   },
   "dependencies": {
-    "@quran-cli/q-cli": "^1.0.1",
-    "@types/cli-table": "^0.3.0",
     "colors": "^1.4.0",
     "node-fetch": "^2.6.7",
     "node-mpv": "^1.5.0",
-    "prettytable": "^0.3.1",
     "ts-command-line-args": "^2.3.1"
   },
   "name": "@quran-cli/q-cli",
   "description": "A simple command line interface for listening to Quran. ## Used API [mp3quran](https://mp3quran.net/eng/api) ## Installation - `npm install` - Install **mpv** as it is required for playing the audio.   - Debian based distributions `sudo add-apt-repository ppa:mc3man/mpv-tests` `sudo apt update && sudo apt install mpv`   - Windows [Follow This link](https://mpv.io/installation/#:~:text=master%20is%20recommended.-,Windows,-All%20binary%20packages)",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "1.0.3",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified",
     "build": "tsc"

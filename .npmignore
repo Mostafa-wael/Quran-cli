@@ -1,2 +1,6 @@
-windows/
-src/
+./github
+./data
+./documnetation
+./testcases
+./windows/
+./gitignore
