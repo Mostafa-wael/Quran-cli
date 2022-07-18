@@ -9,7 +9,7 @@ try {
     if (args.version == true) {
         console.log(pj.version);
     }
-    else if (args.radio >= 0) {
+    else if (args.radio != undefined) {
         radioMode_1.runRadio(args.radio);
     }
     else if (args.reciterSurah.length > 0) {
@@ -41,6 +41,6 @@ catch (err) {
         console.log("Invalid value. Use -h to see the usage guide.");
     }
     else {
-        console.log(err);
+        console.log(err.message);
     }
 }

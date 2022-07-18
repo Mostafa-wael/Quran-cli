@@ -7,10 +7,11 @@ const pj = require('./package.json')
 try {
     const args: CLIArgs = CommandLine.getArgs();
 
+    // Do action based on the mode
     if (args.version == true) {
         console.log(pj.version)
     }
-    else if (args.radio >= 0) {
+    else if (args.radio != undefined) {
         runRadio(args.radio);
     }
     else if (args.reciterSurah.length > 0) {
@@ -45,7 +46,7 @@ catch (err) {
     {
         console.log("Invalid value. Use -h to see the usage guide.");
     }
-    else {
-        console.log(err);
+    else { // custom error message
+        console.log(err.message);
     }
 }
