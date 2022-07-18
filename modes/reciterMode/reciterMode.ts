@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { showListIndex, runFromURL, raiseError } from "../../utilities/helperFunctions";
+import { showListIndex, runFromURL, raiseError, print } from "../../utilities/helperFunctions";
 import { surasDictionary } from "../../utilities/data";
 
 
@@ -15,12 +15,13 @@ const url: string = "https://mp3quran.net/api/_english.php?";
  */
 async function getData(): Promise<object> {
     try {
+        print("Fetching data...", "cyan");
         const data = await fetch(url);
         const data_1 = await data.json();
         return data_1['reciters'];
     }
     catch (err) {
-        console.log("No available Internet connection");
+        print("No available Internet connection", "red");
         process.exit(1); // close the program
     }
 }
@@ -31,7 +32,6 @@ async function getData(): Promise<object> {
 async function getReciterNamesList(): Promise<string[]> {
     let data = await getData();
     // loop on json and extract the reciter names
-    console.log(data);
     let reciters: string[] = [];
     for (let i =0 ; i< (<any>data).length; i++) {
         reciters.push(data[i]['name']);
@@ -110,7 +110,7 @@ export async function runSurah(reciterIndex: number, surahIndex: number) {
     try {
         let reciterData = await getSpecificReciterData(reciterIndex);
         let reciterName = await reciterData['name'];
-        console.log(`Reciter: ${reciterName}, Surah: ${surasDictionary[surahIndex]}`);
+        print(`Reciter ${reciterName} surah ${surahIndex}`, "green");
         runFromURL(await getSurahURL(reciterIndex, surahIndex))
     }
     catch (err) {

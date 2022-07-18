@@ -1,8 +1,12 @@
 import { surasDictionary } from "./data";
-// let PrettyTable = require('prettytable');
 import colors = require('colors');
 import Table = require('../custom_node_modules/cli-table3');
 import mpv = require('node-mpv');
+
+export function print(str: string, color: string="white") 
+{
+    console.log(colors[color](str));
+}
 
 export function showListIndex(arr: string[], header1: string, header2: string, suras: boolean = false) {
     let table = new Table({ head: [colors.cyan(header1), colors.cyan(header2)] });
@@ -27,15 +31,16 @@ export function runFromURL(url: string) {
     mpvPlayer.load(url);
     mpvPlayer.play();
     mpvPlayer.on('stopped', function () {
-        console.log("Finished playing");
+        print("Finished playing", "green");
+        //TODO: run next surah
         process.exit(1); // close the program
     });
 }
 
 export function raiseError (name, message) {
-    const err = new Error(message);
+    const err = new Error(colors.red(message));
     err.name = name;
-    console.log(err.message);
+    print(err.message, "red");
     //TODO: Raise error and catch it in a higher level
     // throw err
   }

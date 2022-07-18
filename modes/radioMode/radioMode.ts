@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { showListIndex, runFromURL, raiseError } from "../../utilities/helperFunctions";
+import { showListIndex, runFromURL, raiseError, print } from "../../utilities/helperFunctions";
 
 const url: string = "https://api.mp3quran.net/radios/radio_english.json";
 
@@ -9,6 +9,7 @@ const url: string = "https://api.mp3quran.net/radios/radio_english.json";
  */
 function getData(): Promise<object> {
     try {
+        print("Fetching data...", "cyan");
         return fetch(url)
             // the JSON body is taken from the response
             .then(res => res.json())
@@ -17,7 +18,7 @@ function getData(): Promise<object> {
             })
     }
     catch (err) {
-        console.log("No available Internet connection");
+        print("No available Internet connection", "red");
         process.exit(1); // close the program
     }
 }
@@ -61,7 +62,7 @@ export async function runRadio(radioIndex: number) {
     try {
         let data = await getSpecificRadioData(radioIndex);
         let radioName = await data['name'];
-        console.log(`Radio Channel: ${radioName}`);
+        print(`Radio Channel: ${radioName}`, "green");
         runFromURL(await data['radio_url']);
     }
     catch (err) {

@@ -52,14 +52,13 @@ Options
 
   
 ## TODO
-1. More pretty output.
-2. Add more detailed instructions.
-3. Add unit tests.
-4. publish as npm package. 
-5. Add ability to show the verses/tafseer, ...
-6. Reciter playlist mode.
-7. Optimize CPU and data transfer.
-8. Docker image if feasible.
-9. Make a vs code extension.
-10. Configure the pipelines.
-11. Documentation doesn't include sub-folders.
+1. Add more detailed instructions.
+2. Add unit tests.
+3. publish as npm package. 
+4. Add ability to show the verses/tafseer, ...
+5. Reciter playlist mode.
+6. Optimize CPU and data transfer.
+7. Docker image if feasible.
+8. Make a vs code extension.
+9.  Configure the pipelines.
+10. Documentation doesn't include sub-folders.

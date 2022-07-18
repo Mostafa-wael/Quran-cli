@@ -1,7 +1,10 @@
 import { CommandLine, CLIArgs } from "./utilities/parser";
 import { runRadio, showAllRadios } from "./modes/radioMode/radioMode";
+import { print } from "./utilities/helperFunctions";
+import colors = require('colors');
 import { runSurah, showAllReciters, showReciterAvailableSuras } from "./modes/reciterMode/reciterMode";
 const pj = require('./package.json')
+
 
 
 try {
@@ -9,7 +12,7 @@ try {
 
     // Do action based on the mode
     if (args.version == true) {
-        console.log(pj.version)
+        print(`${pj.name} v${pj.version}`, "green");
     }
     else if (args.radio != undefined) {
         runRadio(args.radio);
@@ -36,16 +39,16 @@ try {
 catch (err) {
     // check if the error is a CLI error
     if (err.name == "UNKNOWN_OPTION") {
-        console.log("Invalid option. Use -h to see the usage guide.");
+        print("Invalid option. Use -h to see the usage guide.", "red");
     }
     else if (err.name == "ALREADY_SET") {
-        console.log("You can't set the same option more than once.");
+        print("You can't set the same option more than once.", "red");
     }
     else if (err.name == "UNKNOWN_VALUE") {
-        console.log("Invalid value. Use -h to see the usage guide.");
+        print("Invalid value. Use -h to see the usage guide.", "red");
     }
     else // custom error message
     {
-        console.log(err.message);
+        print(err.message, "red");
     }
 }
