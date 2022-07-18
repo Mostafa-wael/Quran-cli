@@ -47,7 +47,9 @@ Options
 - Show all suras in the Quran: `node  quran-cli.js -s`
 
 ## Documentation
-- 
+- 'sudo npm install -g jsdoc'
+- 'jsdoc -d documentation *.js modes/**/*.js utilities/*.js'
+
   
 ## TODO
 1. Remove redundant code.
