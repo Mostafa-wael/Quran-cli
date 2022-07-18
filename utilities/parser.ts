@@ -29,9 +29,6 @@ export class CommandLine {
                 footerContentSections: [{ header: '^_^', content: `Recall us in your doa'!` }],
             },
         );
-        if (args.version === true) {
-            console.log("V1.0.0");
-        }
         if (args.reciterSurah == undefined) {
             args.reciterSurah = [];
         }

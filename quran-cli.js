@@ -4,7 +4,10 @@ var parser_1 = require("./utilities/parser");
 var radioMode_1 = require("./modes/radioMode/radioMode");
 var reciterMode_1 = require("./modes/reciterMode/reciterMode");
 var args = parser_1.CommandLine.getArgs();
-if (args.radio >= 0) {
+if (args.version == true) {
+    console.log("Version: 1.0.0");
+}
+else if (args.radio >= 0) {
     radioMode_1.runRadio(args.radio);
 }
 else if (args.reciterSurah.length > 0) {

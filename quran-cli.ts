@@ -4,8 +4,10 @@ import { runSurah, showAllReciters, showReciterAvailableSuras } from "./modes/re
 
 const args: CLIArgs = CommandLine.getArgs();
 
-
-if (args.radio >= 0) {
+if(args.version == true) {
+    console.log("Version: 1.0.0");
+}
+else if (args.radio >= 0) {
     runRadio(args.radio);
 }
 else if (args.reciterSurah.length > 0) {
