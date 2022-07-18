@@ -32,7 +32,6 @@ export function runFromURL(url: string) {
     mpvPlayer.play();
     mpvPlayer.on('stopped', function () {
         print("Finished playing", "green");
-        //TODO: run next surah
         process.exit(1); // close the program
     });
 }
