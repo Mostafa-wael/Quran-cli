@@ -27,7 +27,7 @@
   "author": "MostafaWael AhmedIhab We'amBassem",
   "scripts": {
 		"lint": "eslint bin --ext ts && eslint lib/modes --ext ts && eslint lib/utilities --ext ts",
-    "build": "tsc",
+    "build": "tsc && cp -R ./lib/custom_node_modules ./out/lib", 
     "pretest": "npm run build && npm run lint",
     "test": "echo \"Error: no test specified"
     },

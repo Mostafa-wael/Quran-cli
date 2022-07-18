@@ -5,13 +5,21 @@
         "declaration": false,
         "noImplicitAny": false,
         "removeComments": true,
+        "outDir": "out",
+        "strict": true, /* enable all strict type-checking options */
         "noLib": false
+        /* Additional Checks */
+        // "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
+        // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
+        // "noUnusedParameters": true,  /* Report errors on unused parameters. */
     },
     "include": [
-        "src/**/*",
-        "lib/**/*"
-, "lib/modes", "bin/index.js"    ],
+        "bin/**/*",
+        "lib/**/*",
+        "lib/modes",
+    ],
     "exclude": [
         "node_modules",
         "src**/*.spec.ts"
-    ]}
+    ]
+}

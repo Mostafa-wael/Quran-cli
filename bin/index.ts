@@ -16,7 +16,7 @@ try {
     else if (args.radio !== undefined) {
         runRadio(args.radio);
     }
-    else if (args.reciterSurah.length > 0) {
+    else if (args.reciterSurah !== undefined && args.reciterSurah.length > 0) {
         if (args.reciterSurah.length === 1) {
             showReciterAvailableSuras(args.reciterSurah[0]);
         }
@@ -35,7 +35,7 @@ try {
         showReciterAvailableSuras(0); // we are sure that the reciter 0 has all the suras.
     }
 }
-catch (err) {
+catch (err: any) {
     // check if the error is a CLI error
     if (err.name === "UNKNOWN_OPTION") {
         print("Invalid option. Use -h to see the usage guide.", "red");
