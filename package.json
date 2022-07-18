@@ -1,27 +1,36 @@
 {
+  "name": "@quran-cli/q-cli",
+  "description": "A simple command line interface for listening to Quran. ## Used API [mp3quran](https://mp3quran.net/eng/api) ## Installation - `npm install` - Install **mpv** as it is required for playing the audio.   - Debian based distributions `sudo add-apt-repository ppa:mc3man/mpv-tests` `sudo apt update && sudo apt install mpv`   - Windows [Follow This link](https://mpv.io/installation/#:~:text=master%20is%20recommended.-,Windows,-All%20binary%20packages)",
+  "version": "1.1.2",
+  "main": "src/index.js",
+  "bin" : { "q-cli" : "bin/index.js" },
   "devDependencies": {
     "@types/node-fetch": "^2.6.2",
-    "jsdoc": "^3.6.10"
+    "@types/vscode": "^1.69.0",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "16.x",
+		"@typescript-eslint/eslint-plugin": "^5.30.0",
+		"@typescript-eslint/parser": "^5.30.0",
+		"eslint": "^8.18.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.0.0",
+		"typescript": "^4.7.4",
+		"@vscode/test-electron": "^2.1.5"
   },
-  "bin" : { "q-cli" : "src/index.js" },
   "dependencies": {
     "colors": "^1.4.0",
     "node-fetch": "^2.6.7",
     "node-mpv": "^1.5.0",
     "ts-command-line-args": "^2.3.1"
   },
-  "name": "@quran-cli/q-cli",
-  "description": "A simple command line interface for listening to Quran. ## Used API [mp3quran](https://mp3quran.net/eng/api) ## Installation - `npm install` - Install **mpv** as it is required for playing the audio.   - Debian based distributions `sudo add-apt-repository ppa:mc3man/mpv-tests` `sudo apt update && sudo apt install mpv`   - Windows [Follow This link](https://mpv.io/installation/#:~:text=master%20is%20recommended.-,Windows,-All%20binary%20packages)",
-  "version": "1.1.0",
-  "main": "src/index.js",
+  "author": "MostafaWael AhmedIhab We'amBassem",
   "scripts": {
-    "test": "echo \"Error: no test specified",
-    "build": "tsc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Mostafa-wael/Quran-cli.git"
-  },
+		"lint": "eslint bin --ext ts && eslint lib/modes --ext ts && eslint lib/utilities --ext ts",
+    "build": "tsc",
+    "pretest": "npm run build && npm run lint",
+    "test": "echo \"Error: no test specified"
+    },
   "keywords": [
     "quran",
     "cli",
@@ -31,10 +40,13 @@
     "mp3",
     "mpv"
   ],
-  "author": "MostafaWael AhmedIhab We'amBassem",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mostafa-wael/Quran-cli.git"
+  },
   "bugs": {
     "url": "https://github.com/Mostafa-wael/Quran-cli/issues"
   },
-  "homepage": "https://github.com/Mostafa-wael/Quran-cli#readme"
+  "homepage": "https://github.com/Mostafa-wael/Quran-cli#readme",
+  "license": "ISC"
 }

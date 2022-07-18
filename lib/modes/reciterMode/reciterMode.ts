@@ -18,8 +18,8 @@ async function getData(): Promise<object> {
         //TODO: cache the data and fetch it only once
         print("Fetching data...", "cyan");
         const data = await fetch(url);
-        const data_1 = await data.json();
-        return data_1['reciters'];
+        const dataJson = await data.json();
+        return dataJson['reciters'];
     }
     catch (err) {
         print("No available Internet connection", "red");
@@ -116,13 +116,17 @@ export async function runSurah(reciterIndex: number, surahIndex: number) {
             // raiseError("INVALID_VALUE", "Surah not available, you can check the available suras for the specified reciter by passing the reciter index only to the '-c' option.");
         }
         print(`Reciter: ${reciterName}, Surah: ${surasDictionary[surahIndex]}`, "green");
-        runFromURL(await getSurahURL(reciterIndex, surahIndex))
+        runFromURL(await getSurahURL(reciterIndex, surahIndex));
     }
     catch (err) {
         if (surasDictionary[surahIndex] === undefined)
+        {
             raiseError("INVALID_VALUE", "Surah not available, you can check the available suras for the specified reciter by passing the reciter index only to the '-c' option.");
+        }
         else // invalid reciter index
+        {
             raiseError("INVALID_VALUE", "Reciter not available, you can list the available reciters using the '-r' option.");
+        }
     }
 }
 

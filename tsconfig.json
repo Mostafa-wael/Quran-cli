@@ -10,7 +10,7 @@
     "include": [
         "src/**/*",
         "lib/**/*"
-, "lib/modes"    ],
+, "lib/modes", "bin/index.js"    ],
     "exclude": [
         "node_modules",
         "src**/*.spec.ts"

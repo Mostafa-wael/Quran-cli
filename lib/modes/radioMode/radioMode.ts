@@ -16,7 +16,7 @@ function getData(): Promise<object> {
             .then(res => res.json())
             .then(res => {
                 return res['radios'];
-            })
+            });
     }
     catch (err) {
         print("No available Internet connection", "red");
