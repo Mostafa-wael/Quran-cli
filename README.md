@@ -16,8 +16,8 @@ A simple command line interface for listening to Quran.
 
 ## How to use
 - To build the source code: `tsc`
-- To show the version: `quran-cli -v`
-- To show help: `node  quran-cli.js -h`
+- To show the version: `q-cli -v`
+- To show help: `node  q-cli -h`
 ```
 Quran-CLI
 
@@ -39,12 +39,12 @@ Options
 
   Recall us in your doa'! 
 ```
-- Show all available radios channels: `node  quran-cli.js -n`
-- Play specific radio: `node quran-cli.js -d <radio index>`
-- Show all available reciters: `node  quran-cli.js -r`
-- Play specific surah by a specific reciter: `node  quran-cli.js -c <reciter index>  <surah index>`
-- Show all available suras by a specific reciter : `node  quran-cli.js -c <reciter index>`
-- Show all suras in the Quran: `node  quran-cli.js -s`
+- Show all available radios channels: `node  q-cli -n`
+- Play specific radio: `node q-cli -d <radio index>`
+- Show all available reciters: `node  q-cli -r`
+- Play specific surah by a specific reciter: `node  q-cli -c <reciter index>  <surah index>`
+- Show all available suras by a specific reciter : `node  q-cli -c <reciter index>`
+- Show all suras in the Quran: `node  q-cli -s`
 
 ## Documentation
 - 'sudo npm install -g jsdoc'
