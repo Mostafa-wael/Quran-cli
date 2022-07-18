@@ -52,20 +52,14 @@ Options
 
   
 ## TODO
-1. Remove redundant code.
-2. More functional programming.
-3. More pretty output.
-4. Better exit output.
-5. Add more detailed instructions.
-6. Add unit tests.
-7. publish as npm package. 
-8. Add ability to show the verses/tafseer, ...
-9. Remember last reciter, radio, ...
-10. Go to the next sura automatically.
-11. Optimize CPU and data transfer.
-12. Docker image if feasible.
-13. Extract data from the xml.
-14. Make a vs code extension.
-15. Configure the pipelines.
-16. close in case of errors.
-17. add general try-catch and pretty logs.
+1. More pretty output.
+2. Add more detailed instructions.
+3. Add unit tests.
+4. publish as npm package. 
+5. Add ability to show the verses/tafseer, ...
+6. Reciter playlist mode.
+7. Optimize CPU and data transfer.
+8. Docker image if feasible.
+9. Make a vs code extension.
+10. Configure the pipelines.
+11. Documentation doesn't include sub-folders.

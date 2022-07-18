@@ -4,6 +4,8 @@
     "jsdoc": "^3.6.10"
   },
   "dependencies": {
+    "@types/cli-table": "^0.3.0",
+    "colors": "^1.4.0",
     "node-fetch": "^2.6.7",
     "node-mpv": "^1.5.0",
     "prettytable": "^0.3.1",
