@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "lib/", "src/", "./"]
+COPY ["package.json", "package-lock.json*", "lib/", "bin/", "./"]
 RUN npm ci 
 COPY . .
 RUN chown -R node /usr/src/app
