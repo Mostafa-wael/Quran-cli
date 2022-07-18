@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { CommandLine, CLIArgs } from "./utilities/parser";
 import { runRadio, showAllRadios } from "./modes/radioMode/radioMode";
 import { print } from "./utilities/helperFunctions";

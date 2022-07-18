@@ -1,11 +1,8 @@
 # Quran-CLI
-
 A simple command line interface for listening to Quran.
 ## Used API
-[mp3quran](https://mp3quran.net/eng/api)
-## Installation
-- run `npm install -g typescript` if you do not have typescript globally
-- `npm install`
+We are using the [mp3quran](https://mp3quran.net/eng/api) api.
+## Dependencies
 - Install **mpv** as it is required for playing the audio.
   - Debian based distributions
 `sudo add-apt-repository ppa:mc3man/mpv-tests`
@@ -15,9 +12,10 @@ A simple command line interface for listening to Quran.
 
 
 ## How to use
-- To build the source code: `tsc`
+- To use without installing the package: `npx @quran-cli/q-cli [options]`
+- Or install it globally: `sudo npm install  @quran-cli/q-cli -g` and use it as `q-cli [options]`
 - To show the version: `q-cli -v`
-- To show help: `node  q-cli -h`
+- To show help: `q-cli -h`
 ```
 Quran-CLI
 
@@ -25,7 +23,7 @@ Quran-CLI
 
 Options
 
-  -n, --showRadio               Shows all available radio channels                                            
+  -n, --showRadios              Shows all available radio channels                                            
   -d, --radio number            Play specific radio                                                           
   -c, --reciterSurah number[]   lay specific surah by a specific reciter.                                     
                                 If no surah specified, it will shows the available suras for the specified    
@@ -37,28 +35,17 @@ Options
 
 ^_^
 
-  Recall us in your doa'! 
+  Recall us in your doa'!  
 ```
-- Show all available radios channels: `node  q-cli -n`
-- Play specific radio: `node q-cli -d <radio index>`
-- Show all available reciters: `node  q-cli -r`
-- Play specific surah by a specific reciter: `node  q-cli -c <reciter index>  <surah index>`
-- Show all available suras by a specific reciter : `node  q-cli -c <reciter index>`
-- Show all suras in the Quran: `node  q-cli -s`
+- Show all available radios channels: `q-cli -n`
+- Play specific radio: `q-cli -d <radio index>`
+- Show all available reciters: `q-cli -r`
+- Play specific surah by a specific reciter: `q-cli -c <reciter index>  <surah index>`
+- Show all available suras by a specific reciter : `q-cli -c <reciter index>`
+- Show all suras in the Quran: `q-cli -s`
 
-## Documentation
-- 'sudo npm install -g jsdoc'
-- 'jsdoc -d documentation *.js modes/**/*.js utilities/*.js'
-
-  
-## TODO
-1. Add more detailed instructions.
-2. Add unit tests.
-3. publish as npm package. 
-4. Add ability to show the verses/tafseer, ...
-5. Reciter playlist mode.
-6. Optimize CPU and data transfer.
-7. Docker image if feasible.
-8. Make a vs code extension.
-9.  Configure the pipelines.
-10. Documentation doesn't include sub-folders.
+## How to build locally
+- Install typescript using: `npm install -g typescript` if you do not have typescript globally
+- Install dependencies: `npm install`
+- Build the source files: `npm run build`
+- Run the index: `node src/index.js [options]`
