@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var parser_1 = require("./utilities/parser");
-var radioMode_1 = require("./modes/radioMode/radioMode");
-var helperFunctions_1 = require("./utilities/helperFunctions");
-var reciterMode_1 = require("./modes/reciterMode/reciterMode");
+var parser_1 = require("../lib/utilities/parser");
+var radioMode_1 = require("../lib/modes/radioMode/radioMode");
+var helperFunctions_1 = require("../lib/utilities/helperFunctions");
+var reciterMode_1 = require("../lib/modes/reciterMode/reciterMode");
 var pj = require('../package.json');
 try {
     var args = parser_1.CommandLine.getArgs();

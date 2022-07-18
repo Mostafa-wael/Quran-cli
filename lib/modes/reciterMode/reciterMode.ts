@@ -10,11 +10,12 @@ const url: string = "https://mp3quran.net/api/_english.php?";
 // ###############################################################################
 
 /**
- * 
+ * Fetches the data from the endpoint and returns it
  * @returns The available reciters data from the endpoint
  */
 async function getData(): Promise<object> {
     try {
+        //TODO: cache the data and fetch it only once
         print("Fetching data...", "cyan");
         const data = await fetch(url);
         const data_1 = await data.json();
@@ -26,7 +27,7 @@ async function getData(): Promise<object> {
     }
 }
 /**
- * 
+ * Get a list of the available reciters' names
  * @returns The reciter names list
  */
 async function getReciterNamesList(): Promise<string[]> {
@@ -39,7 +40,7 @@ async function getReciterNamesList(): Promise<string[]> {
     return reciters;
 }
 /**
- * 
+ * Get the data of the specified reciter
  * @param reciterIndex The index of the reciter in the query data
  * @returns The reciter data from the endpoint
  */
@@ -65,7 +66,7 @@ export function showAllReciters() {
 // ###############################################################################
 
 /**
- * 
+ * Get all the available suras for the specified reciter
  * @param reciterIndex The index of the reciter in the query data
  * @returns all the available suras for a specified reciter
  */
@@ -77,7 +78,7 @@ export async function getReciterAvailableSuras(reciterIndex: number): Promise<st
 
 }
 /**
- * 
+ * Get the URL of the specified sura and reciter
  * @param reciterIndex The index of the reciter in the query data
  * @param surahIndex The index of the surah in the query data
  * @returns The URL of the surah by the specified reciter
@@ -110,7 +111,11 @@ export async function runSurah(reciterIndex: number, surahIndex: number) {
     try {
         let reciterData = await getSpecificReciterData(reciterIndex);
         let reciterName = await reciterData['name'];
-        print(`Reciter ${reciterName} surah ${surahIndex}`, "green");
+        if(surahIndex > reciterData['suras'].split(",").length) {
+            throw new Error("Surah not available, you can check the available suras for the specified reciter by passing the reciter index only to the '-c' option.");
+            // raiseError("INVALID_VALUE", "Surah not available, you can check the available suras for the specified reciter by passing the reciter index only to the '-c' option.");
+        }
+        print(`Reciter: ${reciterName}, Surah: ${surasDictionary[surahIndex]}`, "green");
         runFromURL(await getSurahURL(reciterIndex, surahIndex))
     }
     catch (err) {

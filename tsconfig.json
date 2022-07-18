@@ -8,8 +8,9 @@
         "noLib": false
     },
     "include": [
-        "src/**/*"
-    ],
+        "src/**/*",
+        "lib/**/*"
+, "lib/modes"    ],
     "exclude": [
         "node_modules",
         "src**/*.spec.ts"

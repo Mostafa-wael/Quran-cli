@@ -1,11 +1,9 @@
 #!/usr/bin/env node
-import { CommandLine, CLIArgs } from "./utilities/parser";
-import { runRadio, showAllRadios } from "./modes/radioMode/radioMode";
-import { print } from "./utilities/helperFunctions";
-import colors = require('colors');
-import { runSurah, showAllReciters, showReciterAvailableSuras } from "./modes/reciterMode/reciterMode";
+import { CommandLine, CLIArgs } from "../lib/utilities/parser";
+import { runRadio, showAllRadios } from "../lib/modes/radioMode/radioMode";
+import { print } from "../lib/utilities/helperFunctions";
+import { runSurah, showAllReciters, showReciterAvailableSuras } from "../lib/modes/reciterMode/reciterMode";
 const pj = require('../package.json')
-
 
 
 try {

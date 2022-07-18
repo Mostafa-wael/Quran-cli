@@ -1,6 +1,6 @@
 .github/
 data/
-documnetatio/
+documnetation/
 testcases/
 windows/
-./gitignore
+.gitignore

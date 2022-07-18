@@ -40,7 +40,7 @@ export function runFromURL(url: string) {
 export function raiseError (name, message) {
     const err = new Error(colors.red(message));
     err.name = name;
-    print(err.message, "red");
+    // print(err.message, "red");
     //TODO: Raise error and catch it in a higher level
-    // throw err
+    throw err;
   }

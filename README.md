@@ -37,7 +37,7 @@ Options
 
   Recall us in your doa'!  
 ```
-- Show all available radios channels: `q-cli -n`
+- Show all available radio channels: `q-cli -n`
 - Play specific radio: `q-cli -d <radio index>`
 - Show all available reciters: `q-cli -r`
 - Play specific surah by a specific reciter: `q-cli -c <reciter index>  <surah index>`

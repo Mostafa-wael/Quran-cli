@@ -4,11 +4,12 @@ import { showListIndex, runFromURL, raiseError, print } from "../../utilities/he
 const url: string = "https://api.mp3quran.net/radios/radio_english.json";
 
 /**
- * 
+ * Fetches the data from the endpoint and returns it
  * @returns The available radios data from the endpoint
  */
 function getData(): Promise<object> {
     try {
+        //TODO: cache the data and fetch it only once
         print("Fetching data...", "cyan");
         return fetch(url)
             // the JSON body is taken from the response
@@ -23,20 +24,20 @@ function getData(): Promise<object> {
     }
 }
 /**
- * 
+ * Get a list of radio channels' names
  * @returns The radio names list
  */
 async function getRadioNamesList(): Promise<string[]> {
     let data = await getData();
-    // loop on json and extract the radio names
     let radios: string[] = [];
+    // loop on json and extract the radio names
     for (let i =0 ; i< (<any>data).length; i++) {
         radios.push(data[i]['name']);
     }
     return radios;
 }
 /**
- * 
+ * Get the data of the specified radio
  * @param radioIndex The index of the radio in the query data
  * @returns The specified radio data from the endpoint
  */
