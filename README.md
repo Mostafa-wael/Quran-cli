@@ -4,6 +4,7 @@ A simple command line interface for listening to Quran.
 ## Used API
 [mp3quran](https://mp3quran.net/eng/api)
 ## Installation
+- run `npm install -g typescript` if you do not have typescript globally
 - `npm install`
 - Install **mpv** as it is required for playing the audio.
   - Debian based distributions

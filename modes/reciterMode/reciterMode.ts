@@ -31,9 +31,10 @@ async function getData(): Promise<object> {
 async function getReciterNamesList(): Promise<string[]> {
     let data = await getData();
     // loop on json and extract the reciter names
+    console.log(data);
     let reciters: string[] = [];
-    for (let d of <any>data) {
-        reciters.push(d['Name']);
+    for (let i =0 ; i< (<any>data).length; i++) {
+        reciters.push(data[i]['name']);
     }
     return reciters;
 }

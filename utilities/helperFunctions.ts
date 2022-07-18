@@ -12,7 +12,7 @@ export function showListIndex(arr: string[], header1: string, header2: string, s
             pt.addRow([i, arr[i]]);
         }
     }
-    console.log(pt.toString());
+    pt.print();
 }
 
 export function runFromURL(url: string) {

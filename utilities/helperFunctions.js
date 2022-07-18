@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.runFromURL = exports.showListIndex = void 0;
 var PrettyTable = require('prettytable');
 var mpv = require('node-mpv');
 var data_1 = require("./data");
@@ -15,7 +16,7 @@ function showListIndex(arr, header1, header2, suras) {
             pt.addRow([i, arr[i]]);
         }
     }
-    console.log(pt.toString());
+    pt.print();
 }
 exports.showListIndex = showListIndex;
 function runFromURL(url) {
