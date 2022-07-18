@@ -1,22 +1,41 @@
 {
   "name": "@quran-cli/q-cli",
   "description": "A simple command line interface for listening to Quran. ## Used API [mp3quran](https://mp3quran.net/eng/api) ## Installation - `npm install` - Install **mpv** as it is required for playing the audio.   - Debian based distributions `sudo add-apt-repository ppa:mc3man/mpv-tests` `sudo apt update && sudo apt install mpv`   - Windows [Follow This link](https://mpv.io/installation/#:~:text=master%20is%20recommended.-,Windows,-All%20binary%20packages)",
-  "main": "src/index.js",
+  "main": "./extension/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "q-cli.helloWorld",
+        "title": "Hello World"
+      }
+    ]
+  },
+  "engines": {
+		"vscode": "^1.69.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+        "onCommand:q-cli.helloWorld"
+	],
   "version": "1.1.2",
-  "bin" : { "q-cli" : "bin/index.js" },
+  "bin": {
+    "q-cli": "bin/index.js"
+  },
   "devDependencies": {
     "@types/node-fetch": "^2.6.2",
     "@types/vscode": "^1.69.0",
-		"@types/glob": "^7.2.0",
-		"@types/mocha": "^9.1.1",
-		"@types/node": "16.x",
-		"@typescript-eslint/eslint-plugin": "^5.30.0",
-		"@typescript-eslint/parser": "^5.30.0",
-		"eslint": "^8.18.0",
-		"glob": "^8.0.3",
-		"mocha": "^10.0.0",
-		"typescript": "^4.7.4",
-		"@vscode/test-electron": "^2.1.5"
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "eslint": "^8.18.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "typescript": "^4.7.4",
+    "@vscode/test-electron": "^2.1.5"
   },
   "dependencies": {
     "colors": "^1.4.0",
@@ -26,11 +45,12 @@
   },
   "author": "MostafaWael AhmedIhab We'amBassem",
   "scripts": {
-		"lint": "eslint bin --ext ts && eslint lib/modes --ext ts && eslint lib/utilities --ext ts",
-    "build": "tsc && cp -R ./lib/custom_node_modules ./out/lib", 
+    "lint": "eslint bin --ext ts && eslint lib/modes --ext ts && eslint lib/utilities --ext ts",
+    "watch": "tsc -watch -p ./",
+    "build": "tsc && cp -R ./lib/custom_node_modules ./out/lib",
     "pretest": "npm run build && npm run lint",
     "test": "echo \"Error: no test specified"
-    },
+  },
   "keywords": [
     "quran",
     "cli",

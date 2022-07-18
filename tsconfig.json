@@ -5,7 +5,6 @@
         "declaration": false,
         "noImplicitAny": false,
         "removeComments": true,
-        "outDir": "out",
         "strict": true, /* enable all strict type-checking options */
         "noLib": false
         /* Additional Checks */
@@ -17,6 +16,7 @@
         "bin/**/*",
         "lib/**/*",
         "lib/modes",
+        "extension/**/*"
     ],
     "exclude": [
         "node_modules",
