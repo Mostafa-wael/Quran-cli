@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { showListIndex, runFromURL } from "../../utilities/helperFunctions";
+import { showListIndex, runFromURL, raiseError } from "../../utilities/helperFunctions";
 
 const url: string = "https://api.mp3quran.net/radios/radio_english.json";
 
@@ -50,7 +50,7 @@ export function showAllRadios() {
     getRadioNamesList().then(res => {
         showListIndex(res, 'Radio Index', 'Name');
     }).catch(err => {
-        console.log(err);
+        raiseError("SHOW_ALL_RADIOS", "Error while showing all the radios");
     });
 }
 /**
@@ -66,7 +66,8 @@ export async function runRadio(radioIndex: number) {
     }
     catch (err) {
         let list = await getRadioNamesList();
-        console.log("Please, enter an index from 0 to " + (list.length - 1) + "\nYou can list all the radio channels using the '-n' option.");
+        let errMsg = "Please, enter an index from 0 to " + (list.length - 1) + "\nYou can list all the radio channels using the '-n' option.";
+        raiseError("INVALID_VALUE", errMsg);
     }
 }
 

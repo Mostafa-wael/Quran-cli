@@ -28,3 +28,11 @@ export function runFromURL(url: string) {
         process.exit(1); // close the program
     });
 }
+
+export function raiseError (name, message) {
+    const err = new Error(message);
+    err.name = name;
+    console.log(err.message);
+    //TODO: Raise error and catch it in a higher level
+    // throw err
+  }

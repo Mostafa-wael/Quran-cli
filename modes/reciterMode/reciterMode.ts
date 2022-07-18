@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { showListIndex, runFromURL } from "../../utilities/helperFunctions";
+import { showListIndex, runFromURL, raiseError } from "../../utilities/helperFunctions";
 import { surasDictionary } from "../../utilities/data";
 
 
@@ -56,7 +56,7 @@ export function showAllReciters() {
             showListIndex(res, 'Reciter Index', 'Name');
         })
         .catch(err => {
-            console.log(err);
+            raiseError("SHOW_ALL_RECITERS", "Error while showing all the reciters");
         });
 }
 
@@ -98,7 +98,7 @@ export async function showReciterAvailableSuras(reciterIndex: number) {
         showListIndex(availableSuras, 'Surah Index', 'Name', true);
     }
     catch (err) {
-        console.log("Reciter not available, you can list the available reciters using the '-r' option.");
+        raiseError("INVALID_VALUE", "Reciter not available, you can list the available reciters using the '-r' option.");
     }
 }
 /**
@@ -115,10 +115,9 @@ export async function runSurah(reciterIndex: number, surahIndex: number) {
     }
     catch (err) {
         if (surasDictionary[surahIndex] === undefined)
-            console.log("Surah not available, you can check the available suras for the specified reciter by passing the reciter index only to the '-c' option.");
+            raiseError("INVALID_VALUE", "Surah not available, you can check the available suras for the specified reciter by passing the reciter index only to the '-c' option.");
         else // invalid reciter index
-            console.log("Reciter not available, you can list the available reciters using the '-r' option.");
-
+            raiseError("INVALID_VALUE", "Reciter not available, you can list the available reciters using the '-r' option.");
     }
 }
 

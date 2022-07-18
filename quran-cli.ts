@@ -38,15 +38,14 @@ catch (err) {
     if (err.name == "UNKNOWN_OPTION") {
         console.log("Invalid option. Use -h to see the usage guide.");
     }
-    else if (err.name == "ALREADY_SET")
-    {
+    else if (err.name == "ALREADY_SET") {
         console.log("You can't set the same option more than once.");
     }
-    else if(err.name == "UNKNOWN_VALUE")
-    {
+    else if (err.name == "UNKNOWN_VALUE") {
         console.log("Invalid value. Use -h to see the usage guide.");
     }
-    else { // custom error message
+    else // custom error message
+    {
         console.log(err.message);
     }
 }
