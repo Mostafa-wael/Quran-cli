@@ -1,5 +1,16 @@
 # Quran-CLI
 A simple command line interface for listening to Quran.
+
+<div align="center">
+
+[![GitHub contributors](https://img.shields.io/github/contributors/Mostafa-wael/Quran-cli)](https://img.shields.io/github/contributors/Mostafa-wael/Quran-cli)
+[![GitHub issues](https://img.shields.io/github/issues/Mostafa-wael/Quran-cli)](https://github.com/Mostafa-wael/Quran-cli/issues)
+[![GitHub forks](https://img.shields.io/github/forks/Mostafa-wael/Quran-cli)](https://github.com/Mostafa-wael/Quran-cli/network)
+[![GitHub stars](https://img.shields.io/github/stars/Mostafa-wael/Quran-cli)](https://github.com/Mostafa-wael/Quran-cli/stargazers)
+[![GitHub license](https://img.shields.io/github/license/Mostafa-wael/Quran-cli)](https://github.com/Mostafa-wael/Quran-cli/blob/master/LICENSE)
+
+</div>
+
 ## Used API
 We are using the [mp3quran](https://mp3quran.net/eng/api) api.
 ## Dependencies
