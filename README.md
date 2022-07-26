@@ -2,17 +2,22 @@
 A simple command line interface for listening to Quran.
 
 <div align="center">
-
+  
 [![GitHub contributors](https://img.shields.io/github/contributors/Mostafa-wael/Quran-cli)](https://img.shields.io/github/contributors/Mostafa-wael/Quran-cli)
 [![GitHub issues](https://img.shields.io/github/issues/Mostafa-wael/Quran-cli)](https://github.com/Mostafa-wael/Quran-cli/issues)
 [![GitHub forks](https://img.shields.io/github/forks/Mostafa-wael/Quran-cli)](https://github.com/Mostafa-wael/Quran-cli/network)
 [![GitHub stars](https://img.shields.io/github/stars/Mostafa-wael/Quran-cli)](https://github.com/Mostafa-wael/Quran-cli/stargazers)
 [![GitHub license](https://img.shields.io/github/license/Mostafa-wael/Quran-cli)](https://github.com/Mostafa-wael/Quran-cli/blob/master/LICENSE)
+<img src="https://img.shields.io/github/languages/top/Mostafa-wael/Quran-cli"> 
 
+  
 </div>
 
+## Demo
+https://user-images.githubusercontent.com/56788883/181006153-f1d41833-fc60-43e0-9547-5b9660c1c07a.mp4
+
 ## Used API
-We are using the [mp3quran](https://mp3quran.net/eng/api) api.
+- We are using the [mp3quran](https://mp3quran.net/eng/api) api.
 ## Dependencies
 - Install **mpv** as it is required for playing the audio.
   - Debian based distributions
@@ -54,6 +59,9 @@ Options
 - Play specific surah by a specific reciter: `q-cli -c <reciter index>  <surah index>`
 - Show all available suras by a specific reciter : `q-cli -c <reciter index>`
 - Show all suras in the Quran: `q-cli -s`
+
+## Suggestions
+- Try: `q-cli -d 0`
 
 ## How to build locally
 - Install typescript using: `npm install -g typescript` if you do not have typescript globally
