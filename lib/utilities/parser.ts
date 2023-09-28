@@ -25,7 +25,7 @@ export class CommandLine {
         },
             {
                 helpArg: 'help',
-                headerContentSections: [{ header: 'Quran-CLI', content: 'Listen to the Quran from your terminal' }],
+                headerContentSections: [{ header: 'Quran-CLI', content: 'Listen to the Quran from your terminal \n While listening press P to toggle between pause and resume \n Press q to exit' }],
                 footerContentSections: [{ header: '^_^', content: `Recall us in your doa'!` }],
             },
         );
