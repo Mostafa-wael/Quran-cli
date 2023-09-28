@@ -2,6 +2,8 @@ import { surasDictionary } from "./data";
 import colors = require('colors');
 import Table = require('../custom_node_modules/cli-table3');
 import mpv = require('node-mpv');
+const readline = require('readline');
+
 
 export function print(str: string, color: string = "white") {
     console.log(colors[color](str));
@@ -28,11 +30,37 @@ export function runFromURL(url: string) {
             "verbose": false,
             "audio_only": true
         });
+        // set property
+        mpvPlayer.addProperty('pause', 'no');
+        // Handle keypress events
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout,
+        });
         mpvPlayer.load(url);
         mpvPlayer.play();
         mpvPlayer.on('stopped', function () {
             print("Finished playing", "green");
             process.exit(1); // close the program
+        });
+        rl.input.on('keypress', (key, data) => {
+            if (data.name === 'p') {
+                // Toggle pause and resume
+                mpvPlayer.togglePause();
+                mpvPlayer.getProperty('pause').then(function (val) {
+                    if (val) {
+                        mpvPlayer.setProperty('pause', 'yes');
+                        print("\nPaused", "yellow");
+                    } else {
+                        mpvPlayer.setProperty('pause', 'no');
+                        print("\nResumed", "green");
+                    }
+                }
+                );
+            }
+            else if (data.name === 'q') {
+                mpvPlayer.stop();
+            }
         });
     }
     catch (err) {

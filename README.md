@@ -23,6 +23,8 @@ https://user-images.githubusercontent.com/56788883/181006153-f1d41833-fc60-43e0-
   - Debian based distributions
 `sudo add-apt-repository ppa:mc3man/mpv-tests`
 `sudo apt update && sudo apt install mpv`
+  - [Update] For Ubuntu 22.04
+`sudo apt install mpv`
   - Windows
 [Follow This link](https://mpv.io/installation/#:~:text=master%20is%20recommended.-,Windows,-All%20binary%20packages)
 
@@ -36,6 +38,8 @@ https://user-images.githubusercontent.com/56788883/181006153-f1d41833-fc60-43e0-
 Quran-CLI
 
   Listen to the Quran from your terminal 
+  While listening press P to toggle between pause and resume                    
+  Press q to exit  
 
 Options
 
@@ -67,4 +71,4 @@ Options
 - Install typescript using: `npm install -g typescript` if you do not have typescript globally
 - Install dependencies: `npm install`
 - Build the source files: `npm run build`
-- Run the index: `node src/index.js [options]`
+- Run the index: `node bin/index.js [options]`
